@@ -116,7 +116,6 @@ main {
   display: block;
 }
 #close {
-  display: none;
   width: 50px;
   height: 50px;
   line-height: 50px;
@@ -130,10 +129,6 @@ main {
   box-shadow: 0 1px 10px #333;
   animation: fade 0.5s linear 0s;
   z-index: 100;
-}
-#close.show {
-  display: block;
-
 }
 @keyframes fade {
   from {
@@ -211,6 +206,7 @@ h3 {
   opacity: 1;
   box-shadow: 0 0 4px 20px red;
 }
+/* 画像内ボタンをホバーする前にアニメーションで位置表示する */
 @keyframes boderFadeInOut {
   0% {
     filter: box-shadow(0 0 0 0 red);
