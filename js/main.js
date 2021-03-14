@@ -1,8 +1,4 @@
 /* 
-    // TODO: screenReDrawが２回実行される現象
-    なぜか（操作説明領域（モーダル表示）以外とクローズボタンをクリック!!!!!!!!!!!!が呼ばれる）
-    ＝＞原因判明　FIX
- // TODO: SHARP値で計算方法を変える
  TODO: スマートフォン対応（CSS）
  TODO: JR 共通部のレイアウト＆CSS
  TODO: リファクタリング
@@ -107,7 +103,7 @@ class Controller {
     const screen = this.extractDisplaydataMatchesScreenID(this.currentTitleDate, this.currentScreenID);
     this.operationExplanationView.view(this.currentTitleDate, screen);
     // 操作説明画面での各イベント処理の定義
-    this.defineEvent();
+    this.defineEvents();
   }
   /* 作説明画面用の表示データを取り出す
   ------------------------------------------------------ */
@@ -121,19 +117,13 @@ class Controller {
   }
   /* 操作説明画面での各イベント処理の定義
   ------------------------------------------------------ */
-  defineEvent() {
-    /* クリックイベントを定義(他のクリックイベントと競合する場合があるので注意する)
+  defineEvents() {
+    /* クリックイベントを定義
+    (他のクリックイベントと競合する場合があるので記述順を注意する)
     -------------------------------- */
     document.body.addEventListener('click', (event)=>{
-      console.log('event:::::::::::',event);
-      /* 操作説明の表示画像内のボタンを押下した時の処理を定義
-      （target.closestを利用する理由として、
-      操作画面表示タイミングでイベント定義しているため、
-      他のスクリーンボタン全てに付与できないため。） 
-      !!!!!!! FIX: スクリーン再描画と操作画面表示タイミングにイベント生成に以降 !!!!!!
-      -------------------------------- */
-      if(event.target.closest('.screen-button')) {
-        console.log('.screen-button event!!!!!!!!!!!!')
+      /* 画像内ボタンをクリックした時の動作を定義 */
+      if (event.target.closest('.screen-button')) {
         // 遷移先の表示データを引き渡して操作説明表示部に再表示させる
         this.operationExplanationView.screenReDraw(
           // 遷移先の表示データを取得し引数とする
@@ -142,14 +132,9 @@ class Controller {
             event.target.closest('.screen-button').getAttribute('data-destination')
           )  
         );
-      }
-      /* 操作説明画面が（モーダル）表示になっていて、かつ    
-         操作説明領域（モーダル表示）以外クリックした時
-        （クリックした要素に先祖要素にoperation-explanationが含まれていないこと）
-      -------------------------------- */
-      if (document.getElementById('operation-explanation').classList.contains('show') &&
+      /* 操作説明領域（モーダル表示）以外をクリック */
+      } else if (document.getElementById('operation-explanation').classList.contains('show') &&
         !event.target.closest('#operation-explanation')) {
-        console.log('操作説明領域（モーダル表示）以外とクローズボタンをクリック!!!!!!!!!!!!')
           // 操作説明画面を閉じる
         this.closeOperationExplanationView();
       }
@@ -157,7 +142,6 @@ class Controller {
     /* クローズボタンをクリックした時の処理を定義
     -------------------------------- */
     document.getElementById('close').addEventListener('click', () => {
-      console.log('クローズボタンをクリック!!!!!!!!!!!!')
         // 操作説明画面を閉じる
       this.closeOperationExplanationView();
     });
@@ -397,12 +381,14 @@ class OperationExplanationViewController extends ViewController {
     closeBtn.textContent = '✖️';
     return closeBtn;
   }
-  /* 画面遷移ボタン の生成
+  /* 画面遷移ボタン の生成　FIX: SHARPでCDOORS取得切り替え
   ------------------------------------------------------ */
   setScreenButton(screen){
     const box = document.getElementById('operation-explanation-box');
     const image = document.getElementById('screen-image');
     console.log(`ow:${image.naturalWidth}, oh:${image.naturalHeight}, ${image.width}x${image.height}`);
+
+    // TODO: this.imagewidth等は本当に必要か？メソッド内取得でいいのでは？
 
     this.imagewidth = image.width;
     this.imageHeight = image.height;
@@ -416,11 +402,26 @@ class OperationExplanationViewController extends ViewController {
       button.className = 'screen-button';
       button.setAttribute('data-destination', buttonData.destination);
 
-      button.style.top = (buttonData.coords[1] * widthRatio) + 'px';
-      button.style.left = (buttonData.coords[0] * heightRatio) + 'px';
-      button.style.width = (Math.abs(buttonData.coords[2] - buttonData.coords[0]) * widthRatio) + 'px';
-      button.style.height = (Math.abs(buttonData.coords[3] - buttonData.coords[1]) * heightRatio) + 'px';
-      
+      // 四角形（rectタグ）; 円（circleタグ）; 楕円（ellipseタグ）; 直線（lineタグ）; 折れ線（polylineタグ）; 多角形（polygonタグ）; パス（pathタグ）; 画像（imageタグ）; 文字列（textタグ）
+      switch (buttonData.shape) {
+        case 'rect':
+          console.log('rect');
+          button.style.top = (buttonData.coords[1] * widthRatio) + 'px';
+          button.style.left = (buttonData.coords[0] * heightRatio) + 'px';
+          button.style.width = (Math.abs(buttonData.coords[2] - buttonData.coords[0]) * widthRatio) + 'px';
+          button.style.height = (Math.abs(buttonData.coords[3] - buttonData.coords[1]) * heightRatio) + 'px';
+          break;
+        case 'circle':
+          console.log('circle');
+          button.style.top = ((buttonData.coords[1] - buttonData.coords[2]) * widthRatio) + 'px';
+          button.style.left = ((buttonData.coords[0] - buttonData.coords[2]) * heightRatio) + 'px';
+          button.style.width = (buttonData.coords[2] * 2 * widthRatio) + 'px';
+          button.style.height = (buttonData.coords[2] * 2 * widthRatio) + 'px';
+          button.style.borderRadius = '50%';
+          break;
+        default:
+          console.log(buttonData.shape);
+      }
       box.appendChild(button);
     }); 
   }
