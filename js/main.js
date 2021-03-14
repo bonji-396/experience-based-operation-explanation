@@ -1,12 +1,14 @@
 /* 
-
     // TODO: screenReDrawが２回実行される現象
     なぜか（操作説明領域（モーダル表示）以外とクローズボタンをクリック!!!!!!!!!!!!が呼ばれる）
-    // TODO: SHARP値で計算方法を変える
+    ＝＞原因判明　FIX
+ // TODO: SHARP値で計算方法を変える
  TODO: スマートフォン対応（CSS）
  TODO: JR 共通部のレイアウト＆CSS
+ TODO: リファクタリング
  TODO: ポートフォリオ用ページ
  TODO: ポートフォリオ用にgithub README.md
+ TODO: コメントを削除
  TODO: mikuro.worksに実装
  TODO: github公開
  */
@@ -37,8 +39,10 @@ class DataRetain {
     this.url = url;
     this.downloadData = [];
   }
+  /* JSONデータダウンロード */
   download(callback){
     fetch(this.url)
+    // レスポンス処理
     .then(response => {
       if (response.ok) {
         return response.json(); //json型に変換
@@ -46,10 +50,12 @@ class DataRetain {
         return Promise.reject(new Error('ダウンロードエラーだよ！'));
       }
     })
+    // 取得データ処理
     .then(json => {
       this.downloadData = json.purchaseTypes;
       callback(this);
     })
+    // エラー処理
     .catch(e => {
       console.log(e);
     });
@@ -296,27 +302,21 @@ class OperationExplanationViewController extends ViewController {
   /* 自身が受け持つ要素(#operation-explanation)を表示する
   ------------------------------------------------------ */
   view(purchaseType, screen) {
+    // 全要素削除
     this.deleteElements();
+    // クローズボタン生成
     this.setElement(this.createCloseButton());
-
+    // スクリーンヘッダー
     this.setElement(this.createOperationExplanationHedding(purchaseType));
-    
+    // スクリーン
     this.setElement(this.createOperationExplanationDescription(screen));
     this.setElement(this.createOperationExplanationBox(screen));
     this.setElement(this.createSupplementaryExplanation(screen));
-
-    
     // モーダルウィンドウとして表示する
     this.element.classList.add('show');
     document.body.classList.add('bg');
-
-    
     // （画像を表示して幅高さを取得できるので）画像内のボタンを表示する。
-    // this.setScreenButton(screen);
     const image = document.getElementById('screen-image');
-    console.log(`ow:${image.naturalWidth}, oh:${image.naturalHeight}, ${image.width}x${image.height}`);
-
-    console.log(this.element);
   }
   // スクリーン再描画
   screenReDraw(screen) {
