@@ -221,6 +221,13 @@ h3 {
     filter: box-shadow(0 0 0 0 red);
   }
 }
+/* アニメーション追加 */
+/* #operation-explanation-box>*:not(.screen-button) {
+  opacity: 0.3;
+}
+.screen-button {
+  opacity: 1;
+} */
 #operation-explanation-box>img {
   box-sizing: border-box;
   height: calc((95vh - 220px)); /* javascrtiptで幅を取得するために親要素と一緒の幅指定する */
