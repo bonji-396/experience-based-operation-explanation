@@ -1,3 +1,15 @@
+/* 
+
+    // TODO: screenReDrawが２回実行される現象
+    なぜか（操作説明領域（モーダル表示）以外とクローズボタンをクリック!!!!!!!!!!!!が呼ばれる）
+    // TODO: SHARP値で計算方法を変える
+ TODO: スマートフォン対応（CSS）
+ TODO: JR 共通部のレイアウト＆CSS
+ TODO: ポートフォリオ用ページ
+ TODO: ポートフォリオ用にgithub README.md
+ TODO: mikuro.worksに実装
+ TODO: github公開
+ */
 /* ----------------------------------------------------------------------------
  定数の定義
 ---------------------------------------------------------------------------- */
@@ -15,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
     controller.view();
     console.log(controller);
   });
-
 }, false);
 /* ----------------------------------------------------------------------------
   画面管理データ保持 DataRetain - JSONデータをダウンロードして保持する。
@@ -70,10 +81,11 @@ class Controller {
     if (this.currentTitleID) {
       this.displayOperationExplanationView();
     }
-    /* 購入方法ボタンが押下された時（ハッシュ値が変更された時、ハッシュ値がある場合）
+    /* 購入方法ボタンが押下された時と、操作説明が閉じられた時（ハッシュ値が変更された時、ハッシュ値がある場合）
     操作説明の画面を表示
     -------------------------------- */
     window.addEventListener('hashchange', (e)=>{
+      console.log('ハッシュ値変更！！！！！！')
       if(window.location.hash.slice(1)) {
         this.currentTitleID = window.location.hash.slice(1);
         this.displayOperationExplanationView();
@@ -86,7 +98,8 @@ class Controller {
     // 操作説明の画面を表示
     this.operationExplanationView = new OperationExplanationViewController();
     this.currentTitleDate = this.getTitleDataToBeDisplayed();
-    this.operationExplanationView.view(this.currentTitleDate, this.currentScreenID);
+    const screen = this.extractDisplaydataMatchesScreenID(this.currentTitleDate, this.currentScreenID);
+    this.operationExplanationView.view(this.currentTitleDate, screen);
     // 操作説明画面での各イベント処理の定義
     this.defineEvent();
   }
@@ -103,32 +116,56 @@ class Controller {
   /* 操作説明画面での各イベント処理の定義
   ------------------------------------------------------ */
   defineEvent() {
-    /* クリックイベントを定義
+    /* クリックイベントを定義(他のクリックイベントと競合する場合があるので注意する)
     -------------------------------- */
     document.body.addEventListener('click', (event)=>{
-      /* 操作説明画面が（モーダル）表示になっていて、
-      操作説明領域（モーダル表示）以外クリックした時と、
-      クローズボタンをクリックした時の処理を定義
+      console.log('event:::::::::::',event);
+      /* 操作説明の表示画像内のボタンを押下した時の処理を定義
+      （target.closestを利用する理由として、
+      操作画面表示タイミングでイベント定義しているため、
+      他のスクリーンボタン全てに付与できないため。） 
+      !!!!!!! FIX: スクリーン再描画と操作画面表示タイミングにイベント生成に以降 !!!!!!
+      -------------------------------- */
+      if(event.target.closest('.screen-button')) {
+        console.log('.screen-button event!!!!!!!!!!!!')
+        // 遷移先の表示データを引き渡して操作説明表示部に再表示させる
+        this.operationExplanationView.screenReDraw(
+          // 遷移先の表示データを取得し引数とする
+          this.extractDisplaydataMatchesScreenID(
+            this.currentTitleDate,
+            event.target.closest('.screen-button').getAttribute('data-destination')
+          )  
+        );
+      }
+      /* 操作説明画面が（モーダル）表示になっていて、かつ    
+         操作説明領域（モーダル表示）以外クリックした時
+        （クリックした要素に先祖要素にoperation-explanationが含まれていないこと）
       -------------------------------- */
       if (document.getElementById('operation-explanation').classList.contains('show') &&
-        !event.target.closest('#operation-explanation') || event.target.closest('#close')) {
-        // 操作説明画面を閉じる
+        !event.target.closest('#operation-explanation')) {
+        console.log('操作説明領域（モーダル表示）以外とクローズボタンをクリック!!!!!!!!!!!!')
+          // 操作説明画面を閉じる
         this.closeOperationExplanationView();
       }
-      /* 操作説明の表示画像内のボタンを押下した時の処理を定義
-      -------------------------------- */
-      /* TODO:!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
-      if(event.target.closest('.screen-button')) {
-        this.operationExplanationView.screenReDraw(event.target.closest('.screen-button').getAttribute('data-destination'));
-      }
-
+    });
+    /* クローズボタンをクリックした時の処理を定義
+    -------------------------------- */
+    document.getElementById('close').addEventListener('click', () => {
+      console.log('クローズボタンをクリック!!!!!!!!!!!!')
+        // 操作説明画面を閉じる
+      this.closeOperationExplanationView();
     });
     /* Window表示サイズが変化した時の処理
     -------------------------------- */
     window.addEventListener('resize', ()=> {
+      console.log('リサイズされます！！！！！！')
       // 画像サイズが変更された場合
       if(this.operationExplanationView.checkScreenImageReSize()){
-        this.operationExplanationView.buttonsReDraw(this.currentTitleDate, this.currentScreenID);
+        // 画像ボタンの再描画
+        this.operationExplanationView.buttonsReDraw(
+          // 現在のスクリーンデータを取得し引数とする
+          this.extractDisplaydataMatchesScreenID(
+            this.currentTitleDate, this.currentScreenID))
       }
     });
   }
@@ -139,6 +176,15 @@ class Controller {
     window.location.hash = '';
     this.operationExplanationView.close();
     this.selectAPurchaseMethodView.ankerEvensAuto();
+  }
+  /* screenID にマッチしたscreenoデータを取り出す
+  ------------------------------------------------------ */
+  extractDisplaydataMatchesScreenID(purchaseType, screenID) {
+    for (let screen of purchaseType.screens) {
+      if (screen.screenID == screenID) {
+        return screen;
+      }
+    }
   }
   // TODO: ResizeObserverとMutationObserverを実装する
 }
@@ -249,16 +295,16 @@ class OperationExplanationViewController extends ViewController {
   }
   /* 自身が受け持つ要素(#operation-explanation)を表示する
   ------------------------------------------------------ */
-  view(purchaseType, screenID) {
+  view(purchaseType, screen) {
     this.deleteElements();
+    this.setElement(this.createCloseButton());
 
     this.setElement(this.createOperationExplanationHedding(purchaseType));
     
-    const screen = this.extractDisplaydataMatchesScreenID(purchaseType, screenID);
     this.setElement(this.createOperationExplanationDescription(screen));
     this.setElement(this.createOperationExplanationBox(screen));
     this.setElement(this.createSupplementaryExplanation(screen));
-    this.setElement(this.createCloseButton());
+
     
     // モーダルウィンドウとして表示する
     this.element.classList.add('show');
@@ -272,14 +318,15 @@ class OperationExplanationViewController extends ViewController {
 
     console.log(this.element);
   }
-    /*  screenID にマッチした表示データを取り出す
-  ------------------------------------------------------ */
-  extractDisplaydataMatchesScreenID(purchaseType, screenID) {
-    for (let screen of purchaseType.screens) {
-      if (screen.screenID == screenID) {
-        return screen;
-      }
-    }
+  // スクリーン再描画
+  screenReDraw(screen) {
+    console.log(screen, 'を表示しなおします。！！！！！！！') 
+    document.getElementById('operation-explanation-description').remove();
+    document.getElementById('operation-explanation-box').remove();
+    document.querySelector('#operation-explanation>p').remove();
+    this.setElement(this.createOperationExplanationDescription(screen));
+    this.setElement(this.createOperationExplanationBox(screen));
+    this.setElement(this.createSupplementaryExplanation(screen));
   }
   /* operation-explanation-hedding の生成
   ------------------------------------------------------ */
@@ -313,6 +360,9 @@ class OperationExplanationViewController extends ViewController {
     opeExpDescription.appendChild(p);
 
     return opeExpDescription;
+  }
+  removeOperationExplanationDescription(screen){
+
   }
   /* peration-explanation-box の生成
   ------------------------------------------------------ */
@@ -352,8 +402,6 @@ class OperationExplanationViewController extends ViewController {
   setScreenButton(screen){
     const box = document.getElementById('operation-explanation-box');
     const image = document.getElementById('screen-image');
-    // TODO: SHARP値で計算方法を変える
-    // TODO: buttonをホバーすると、window.clickイベントが消える？？？？
     console.log(`ow:${image.naturalWidth}, oh:${image.naturalHeight}, ${image.width}x${image.height}`);
 
     this.imagewidth = image.width;
@@ -376,18 +424,9 @@ class OperationExplanationViewController extends ViewController {
       box.appendChild(button);
     }); 
   }
-  // スクリーン再描画
-  screenReDraw(screenID) {
-    console.log(screenID, 'に表示しなおします。！！！！！！！') 
-    // removeOperationExplanationDescription
-    // removeOperationExplanationBox
-    // createOperationExplanationDescription
-    // createOperationExplanationBox
-  }
   /* 画像内ボタンの再描画 */
-  buttonsReDraw(purchaseType, screenID){
+  buttonsReDraw(screen){
     console.log('buttonを表示しなおします。！！！！！！！')
-    const screen = this.extractDisplaydataMatchesScreenID(purchaseType, screenID);
     const box = document.getElementById('operation-explanation-box');
     const buttons = box.getElementsByClassName('screen-button');
     /// 全てのbuttonをboxから削除
