@@ -2,7 +2,7 @@
 /* TODO:
 - JRのヘッダーフッターレイアウト
 - スマートフォン対応（レスポンシブ）
-- 画面画像のフルードイメージ化（横幅には対応しているが、縦幅が未対応）
+- FIX : 操作説明画像のフルードイメージ化（横幅には対応しているが、縦幅が未対応）
 ---------------------------------------------------------------------------- */
 
 /* custom properties
@@ -192,19 +192,12 @@ h3 {
   background-color: var(--sub-color);
   opacity: 0;
   transition: 0.4s;
-
-  /* filter: drop-shadow(0 0 5px #fff); */
-  animation-name: boderFadeInOut;
-  animation-timing-function: linear;
-  animation-duration: 1s;
-  /* animation-delay: 1s; */
-  animation-direction: alternate;
-  animation-iteration-count:2;
 }
 .screen-button:hover{
   background-color: rgba(255, 255, 255, 0);
   opacity: 1;
   box-shadow: 0 0 4px 20px red;
+  animation: 2s ease 0s 2 normal running boderFadeInOut;
 }
 /* 画像内ボタンをホバーする前にアニメーションで位置表示する */
 @keyframes boderFadeInOut {

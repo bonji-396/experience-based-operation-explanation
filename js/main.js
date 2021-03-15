@@ -1,4 +1,11 @@
 /* 
+ TODO: モーダル表示を閉じた後、再度オペレートすると画像内ボタンの書き換え時に、
+ モーダル表示を閉じた回数分だけ、ボタン要素が書き込まれている？？
+ 原因は、モーダルを表示するときに定義した、イベントが残り続けるから・・・
+
+~~~上記は対応したが、ボタンの再描画がうまくできなくなる（ウィンドウサイズ変更タイミング）
+
+ 子孫要素などが残る可能性がある。
  TODO: スマートフォン対応（CSS）
  TODO: アニメーションの追加（画面表示毎に画面内ボタンをフラッシュまたは、他をグレーアウト）
  TODO: JR 共通部のレイアウト＆CSS
@@ -84,27 +91,25 @@ class Controller {
     if (this.currentTitleID) {
       this.displayOperationExplanationView();
     }
-    /* 購入方法ボタンが押下された時と、操作説明が閉じられた時（ハッシュ値が変更された時、ハッシュ値がある場合）
-    操作説明の画面を表示
-    -------------------------------- */
-    window.addEventListener('hashchange', (e)=>{
-      console.log('ハッシュ値変更！！！！！！')
-      if(window.location.hash.slice(1)) {
-        this.currentTitleID = window.location.hash.slice(1);
-        this.displayOperationExplanationView();
-      }
-    })
+    // ハッシュ値が変更された時の処理
+    this.defineHashchangeEvent();
+    // クリックイベント処理
+    this.defineClickEvents();
+    // Window表示サイズが変化した時の処理
+    this.defineResizeEvents();
+    
   }
   /* 操作説明画面の表示
   ------------------------------------------------------ */
   displayOperationExplanationView(){
-    // 操作説明の画面を表示
+    // 操作説明表示部を生成
     this.operationExplanationView = new OperationExplanationViewController();
     this.currentTitleDate = this.getTitleDataToBeDisplayed();
+    // 操作説明の画面を表示
     const screen = this.extractDisplaydataMatchesScreenID(this.currentTitleDate, this.currentScreenID);
     this.operationExplanationView.view(this.currentTitleDate, screen);
-    // 操作説明画面での各イベント処理の定義
-    this.defineEvents();
+    // クローズボタンをクリックした時の処理
+    this.defineCloseButtonEvents();
   }
   /* 作説明画面用の表示データを取り出す
   ------------------------------------------------------ */
@@ -116,15 +121,24 @@ class Controller {
     }
     return null;
   }
-  /* 操作説明画面での各イベント処理の定義
+  /* ハッシュ値が変更された時の処理
+  -------------------------------- */
+  defineHashchangeEvent() {
+    window.addEventListener('hashchange', (e)=>{
+      console.log('ハッシュ値変更！！！！！！')
+      if(window.location.hash.slice(1)) {
+        this.currentTitleID = window.location.hash.slice(1);
+        this.displayOperationExplanationView();
+      }
+    });  
+  }
+  /* 
   ------------------------------------------------------ */
-  defineEvents() {
-    /* クリックイベントを定義
-    (他のクリックイベントと競合する場合があるので記述順を注意する)
-    -------------------------------- */
+  defineClickEvents() {
     document.body.addEventListener('click', (event)=>{
       /* 画像内ボタンをクリックした時の動作を定義 */
       if (event.target.closest('.screen-button')) {
+        console.log('ボタンがクリックされたよ');
         // 遷移先の表示データを引き渡して操作説明表示部に再表示させる
         this.operationExplanationView.screenReDraw(
           // 遷移先の表示データを取得し引数とする
@@ -133,21 +147,27 @@ class Controller {
             event.target.closest('.screen-button').getAttribute('data-destination')
           )  
         );
-      /* 操作説明領域（モーダル表示）以外をクリック */
+
       } else if (document.getElementById('operation-explanation').classList.contains('show') &&
-        !event.target.closest('#operation-explanation')) {
-          // 操作説明画面を閉じる
-        this.closeOperationExplanationView();
-      }
-    });
-    /* クローズボタンをクリックした時の処理を定義
-    -------------------------------- */
-    document.getElementById('close').addEventListener('click', () => {
+                !event.target.closest('#operation-explanation')) {
         // 操作説明画面を閉じる
+        this.closeOperationExplanationView();
+        console.log('閉じた！！');
+      }
+    // }, { once: true }); // 要素に対してのイベント出ないのでイベントが残り重複する可能性があるため。
+    });
+  }
+  /* クローズボタンをクリックした時の処理
+  ------------------------------------------------------ */
+  defineCloseButtonEvents() {
+    document.getElementById('close').addEventListener('click', () => {
+      // 操作説明画面を閉じる
       this.closeOperationExplanationView();
     });
-    /* Window表示サイズが変化した時の処理
-    -------------------------------- */
+  }
+  /* Window表示サイズが変化した時の処理
+  ------------------------------------------------------ */
+  defineResizeEvents() {
     window.addEventListener('resize', ()=> {
       console.log('リサイズされます！！！！！！')
       // 画像サイズが変更された場合
@@ -163,6 +183,9 @@ class Controller {
   /* 操作説明画面を閉じる 
   ------------------------------------------------------ */
   closeOperationExplanationView() {
+    // 画像内ボタンの削除
+    this.operationExplanationView.removeScreenButtons();
+
     this.currentTitleID = '';
     window.location.hash = '';
     this.operationExplanationView.close();
@@ -307,6 +330,7 @@ class OperationExplanationViewController extends ViewController {
   screenReDraw(screen) {
     console.log(screen, 'を表示しなおします。！！！！！！！') 
     document.getElementById('operation-explanation-description').remove();
+    document.getElementById('operation-explanation-box').innerHTML = '';
     document.getElementById('operation-explanation-box').remove();
     document.querySelector('#operation-explanation>p').remove();
     this.setElement(this.createOperationExplanationDescription(screen));
@@ -382,7 +406,8 @@ class OperationExplanationViewController extends ViewController {
     closeBtn.textContent = '✖️';
     return closeBtn;
   }
-  /* 画面遷移ボタン の生成　FIX: SHARPでCDOORS取得切り替え
+  /* TODO:もう少し整理する。
+   画面遷移ボタン の生成
   ------------------------------------------------------ */
   setScreenButton(screen){
     const box = document.getElementById('operation-explanation-box');
@@ -426,18 +451,22 @@ class OperationExplanationViewController extends ViewController {
       box.appendChild(button);
     }); 
   }
-  /* 画像内ボタンの再描画 */
-  buttonsReDraw(screen){
-    console.log('buttonを表示しなおします。！！！！！！！')
+  /*  画像内ボタンの削除 */
+  removeScreenButtons(){
     const box = document.getElementById('operation-explanation-box');
-    const buttons = box.getElementsByClassName('screen-button');
+    const buttons = document.getElementsByClassName('screen-button');
     /// 全てのbuttonをboxから削除
     for (let button of buttons) {
+      console.log(button,'を削除します。');
       box.removeChild(button);
     }
+  }
+  /* 画像内ボタンの再描画 */
+  buttonsReDraw(screen){
+
+    console.log('buttonを表示しなおします。！！！！！！！')
+    this.removeScreenButtons();
     this.setScreenButton(screen);
-
-
   }
   /* 画像のリサイズチェック */
   checkScreenImageReSize() {
@@ -452,8 +481,8 @@ class OperationExplanationViewController extends ViewController {
   /* 自身が受け持つ要素を非表示にする（モーダルウィンドウを閉じる）
   ------------------------------------------------------ */
   close(){
+    this.deleteElements();
     this.element.classList.remove('show');
     document.body.classList.remove('bg');
-    this.deleteElements();
   }
 }

@@ -127,7 +127,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen07",
-              "coords": [495, 851, 599, 819, 16]
+              "coords": [495, 851, 785, 915, 16]
             },
             {
               "name" : "cancel",
@@ -235,7 +235,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen11",
-              "coords": [1000, 340, 1150, 442, 16]
+              "coords": [1000, 340, 1105, 442, 16]
             },
             {
               "name" : "cancel",
@@ -476,7 +476,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen07",
-              "coords": [495, 851, 599, 819, 16]
+              "coords": [495, 851, 785, 915, 16]
             },
             {
               "name" : "cancel",
@@ -605,7 +605,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen12",
-              "coords": [614, 386, 1127, 517, 16]
+              "coords": [614, 386, 1233, 517, 16]
             },
             {
               "name" : "cancel",
@@ -963,8 +963,8 @@
           "imageUrl": "img/shinkansen_slide07.png",
           "buttons": [
             {
-              "name": "",
-              "shape": "",
+              "name": "next",
+              "shape": "rect",
               "destination": "screen08",
               "coords": [218, 806, 335, 871, 16]
             },
@@ -1320,8 +1320,8 @@
           "imageUrl": "img/shinkansen_slide20.png",
           "buttons": [
             {
-              "name": "",
-              "shape": "",
+              "name": "next",
+              "shape": "rect",
               "destination": "screen21",
               "coords": [448, 761, 597, 819, 16]
             },
@@ -1546,8 +1546,8 @@
           "imageUrl": "img/suica_slide06.png",
           "buttons": [
             {
-              "name": "",
-              "shape": "",
+              "name": "next",
+              "shape": "rect",
               "destination": "screen07",
               "coords": [489, 319, 788, 498, 16]
             },
@@ -1988,8 +1988,8 @@
           "imageUrl": "img/net_slide06.png",
           "buttons": [
             {
-              "name": "",
-              "shape": "",
+              "name": "next",
+              "shape": "rect",
               "destination": "screen07",
               "coords": [627, 494, 741, 537, 16]
             },
