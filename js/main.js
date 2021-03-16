@@ -1,11 +1,4 @@
 /* 
- TODO: モーダル表示を閉じた後、再度オペレートすると画像内ボタンの書き換え時に、
- モーダル表示を閉じた回数分だけ、ボタン要素が書き込まれている？？
- 原因は、モーダルを表示するときに定義した、イベントが残り続けるから・・・
-
-~~~上記は対応したが、ボタンの再描画がうまくできなくなる（ウィンドウサイズ変更タイミング）
-
- 子孫要素などが残る可能性がある。
  TODO: スマートフォン対応（CSS）
  TODO: アニメーションの追加（画面表示毎に画面内ボタンをフラッシュまたは、他をグレーアウト）
  TODO: JR 共通部のレイアウト＆CSS
@@ -95,9 +88,6 @@ class Controller {
     this.defineHashchangeEvent();
     // クリックイベント処理
     this.defineClickEvents();
-    // Window表示サイズが変化した時の処理
-    this.defineResizeEvents();
-    
   }
   /* 操作説明画面の表示
   ------------------------------------------------------ */
@@ -110,6 +100,8 @@ class Controller {
     this.operationExplanationView.view(this.currentTitleDate, screen);
     // クローズボタンをクリックした時の処理
     this.defineCloseButtonEvents();
+    // Window表示サイズが変化した時の処理
+    window.addEventListener('resize', this.defineResizeEvents);
   }
   /* 作説明画面用の表示データを取り出す
   ------------------------------------------------------ */
@@ -167,10 +159,10 @@ class Controller {
   }
   /* Window表示サイズが変化した時の処理
   ------------------------------------------------------ */
-  defineResizeEvents() {
-    window.addEventListener('resize', ()=> {
+  defineResizeEvents = () => {
       console.log('リサイズされます！！！！！！')
       // 画像サイズが変更された場合
+      console.log(this.operationExplanationView);
       if(this.operationExplanationView.checkScreenImageReSize()){
         // 画像ボタンの再描画
         this.operationExplanationView.buttonsReDraw(
@@ -178,7 +170,6 @@ class Controller {
           this.extractDisplaydataMatchesScreenID(
             this.currentTitleDate, this.currentScreenID))
       }
-    });
   }
   /* 操作説明画面を閉じる 
   ------------------------------------------------------ */
@@ -190,6 +181,8 @@ class Controller {
     window.location.hash = '';
     this.operationExplanationView.close();
     this.selectAPurchaseMethodView.ankerEvensAuto();
+    // Window表示サイズが変化した時の処理を削除
+    window.removeEventListener('resize', this.defineResizeEvents);
   }
   /* screenID にマッチしたscreenoデータを取り出す
   ------------------------------------------------------ */
