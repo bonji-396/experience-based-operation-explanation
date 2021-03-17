@@ -162,16 +162,25 @@ h2 {
 #operation-explanation-description {
   max-width: 800px;
   margin: 0 auto;
-  display: flex;
+  display: grid;
+  grid-template-columns: 20% 80%;
 }
 h3 {
-  width: 20%;
   margin-bottom: 10px;
+}
+@keyframes typing {
+  from{ width: 0;}
 }
 #operation-explanation-description>p {
-  width: 80%;
+  width: 50ch;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 2s steps(50);
   margin-bottom: 10px;
 }
+
+
+
 /* #operation-explanation-box
 ------------------- */
 #operation-explanation-box {
