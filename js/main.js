@@ -1,5 +1,5 @@
 /* 
- FIX: バグ（サイズ変更時にScteenButtonの生成がうまくいっていない。）
+ FIX: closeや、view、redrawのタイミングで状態情報の整合性を図る
  FIX: ScreenButtonの位置計算を高さから幅を基準に変更する
  TODO: スマートフォン対応（CSS）
  TODO: JR 共通部のレイアウト＆CSS
@@ -72,7 +72,7 @@ class Controller {
     this.operationExplanationView;
     // 表示するTitleIDとして（初回アクセス時のハッシュ値を格納）
     this.currentTitleID = window.location.hash.slice(1);
-    this.currentTitleDate = {};
+    this.currentTitleData = {};
     // 表示するスクリーンIDの初期化
     this.currentScreenID = 'screen01';
   }
@@ -95,10 +95,10 @@ class Controller {
   displayOperationExplanationView(){
     // 操作説明表示部を生成
     this.operationExplanationView = new OperationExplanationViewController();
-    this.currentTitleDate = this.getTitleDataToBeDisplayed();
+    this.currentTitleData = this.getTitleDataToBeDisplayed();
     // 操作説明の画面を表示
-    const screen = this.extractDisplaydataMatchesScreenID(this.currentTitleDate, this.currentScreenID);
-    this.operationExplanationView.view(this.currentTitleDate, screen);
+    const screen = this.extractDisplaydataMatchesScreenID(this.currentTitleData, this.currentScreenID);
+    this.operationExplanationView.view(this.currentTitleData, screen);
     // クローズボタンをクリックした時の処理
     this.defineCloseButtonEvents();
     // Window表示サイズが変化した時の処理
@@ -125,7 +125,7 @@ class Controller {
       }
     });  
   }
-  /* 
+  /* クリックイベントを定義 
   ------------------------------------------------------ */
   defineClickEvents() {
     document.body.addEventListener('click', (event)=>{
@@ -136,12 +136,15 @@ class Controller {
         this.operationExplanationView.screenReDraw(
           // 遷移先の表示データと、データセット（遷移先スクリーン名）を取得し引数とする
           this.extractDisplaydataMatchesScreenID(
-            this.currentTitleDate,
+            this.currentTitleData,
             // event.target.closest('.screen-button').getAttribute('data-destination')
             event.target.closest('.screen-button').dataset.destination
           )  
         );
-
+        this.currentScreenID = event.target.closest('.screen-button').dataset.destination;
+        console.log('currentTitleD',this.currentTitleID);
+        console.log('currentScreenID',this.currentScreenID);
+      /*  操作説明画面の表示部の外側をクリックした時 */
       } else if (document.getElementById('operation-explanation').classList.contains('show') &&
                 !event.target.closest('#operation-explanation')) {
         // 操作説明画面を閉じる
@@ -170,7 +173,7 @@ class Controller {
         this.operationExplanationView.buttonsReDraw(
           // 現在のスクリーンデータを取得し引数とする
           this.extractDisplaydataMatchesScreenID(
-            this.currentTitleDate, this.currentScreenID))
+            this.currentTitleData, this.currentScreenID))
       }
   }
   /* 操作説明画面を閉じる 
@@ -473,7 +476,6 @@ class OperationExplanationViewController extends ViewController {
   }
   /* 画像内ボタンの再描画 */
   buttonsReDraw(screen){
-
     console.log('buttonを表示しなおします。！！！！！！！')
     this.removeScreenButtons();
     this.setScreenButton(screen);
