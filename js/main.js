@@ -1,6 +1,8 @@
 /* 
+ FIX: バグ（サイズ変更時にScteenButtonの生成がうまくいっていない。）
+ FIX: CSS 疑似要素のスタイルをJavaScriptから充てたい（widhtを計算してwidthを設定したい）
+ FIX: 画面画像のフルードイメージ（幅）対応（背景画像にするべきか？）
  TODO: スマートフォン対応（CSS）
- TODO: アニメーションの追加（画面表示毎に画面内ボタンをフラッシュまたは、他をグレーアウト）
  TODO: JR 共通部のレイアウト＆CSS
  TODO: リファクタリング
  TODO: ポートフォリオ用ページ
@@ -133,10 +135,11 @@ class Controller {
         console.log('ボタンがクリックされたよ');
         // 遷移先の表示データを引き渡して操作説明表示部に再表示させる
         this.operationExplanationView.screenReDraw(
-          // 遷移先の表示データを取得し引数とする
+          // 遷移先の表示データと、データセット（遷移先スクリーン名）を取得し引数とする
           this.extractDisplaydataMatchesScreenID(
             this.currentTitleDate,
-            event.target.closest('.screen-button').getAttribute('data-destination')
+            // event.target.closest('.screen-button').getAttribute('data-destination')
+            event.target.closest('.screen-button').dataset.destination
           )  
         );
 
@@ -318,6 +321,7 @@ class OperationExplanationViewController extends ViewController {
     document.body.classList.add('bg');
     // （画像を表示して幅高さを取得できるので）画像内のボタンを表示する。
     const image = document.getElementById('screen-image');
+    // console.log(document.getElementById('operation-explanation-box').clientWidth); 
   }
   // スクリーン再描画
   screenReDraw(screen) {
@@ -325,7 +329,7 @@ class OperationExplanationViewController extends ViewController {
     document.getElementById('operation-explanation-description').remove();
     document.getElementById('operation-explanation-box').innerHTML = '';
     document.getElementById('operation-explanation-box').remove();
-    document.querySelector('#operation-explanation>p').remove();
+    document.getElementById('supplementary-explanation').remove();
     this.setElement(this.createOperationExplanationDescription(screen));
     this.setElement(this.createOperationExplanationBox(screen));
     this.setElement(this.createSupplementaryExplanation(screen));
@@ -358,6 +362,7 @@ class OperationExplanationViewController extends ViewController {
     opeExpDescription.appendChild(h3);
 
     const p = document.createElement('p');
+    console.log('lengh', screen.description.length); ///////// 文字列の長さを取得
     p.innerText = screen.description;
     opeExpDescription.appendChild(p);
 
@@ -371,6 +376,8 @@ class OperationExplanationViewController extends ViewController {
   createOperationExplanationBox(screen){
     const box = document.createElement('div');
     box.id = 'operation-explanation-box';
+    
+    // box.style.backgroundImage = `url(${screen.imageUrl})`;
 
     const img = document.createElement('img');
     img.id = 'screen-image'
@@ -385,10 +392,14 @@ class OperationExplanationViewController extends ViewController {
   /* supplementary explanation の生成
   ------------------------------------------------------ */
   createSupplementaryExplanation(screen) {
+    const supp = document.createElement('div');
+    supp.id = 'supplementary-explanation';
+
     const exp = document.createElement('p');
     exp.textContent = screen.supplementaryExplanation;
 
-    return exp;
+    supp.appendChild(exp);
+    return supp ;
   }
   /* （操作説明の表示を）閉じるボタンの要素の生成
   ------------------------------------------------------ */
@@ -419,7 +430,13 @@ class OperationExplanationViewController extends ViewController {
     screen.buttons.forEach((buttonData)=>{
       const button = document.createElement('div');
       button.className = 'screen-button';
-      button.setAttribute('data-destination', buttonData.destination);
+      // button.setAttribute('data-destination', buttonData.destination);
+      button.dataset.destination = buttonData.destination;
+      button.dataset.name = buttonData.name;
+
+      if (buttonData.name == 'next') {
+        
+      }
 
       // 四角形（rectタグ）; 円（circleタグ）; 楕円（ellipseタグ）; 直線（lineタグ）; 折れ線（polylineタグ）; 多角形（polygonタグ）; パス（pathタグ）; 画像（imageタグ）; 文字列（textタグ）
       switch (buttonData.shape) {
@@ -429,6 +446,7 @@ class OperationExplanationViewController extends ViewController {
           button.style.left = (buttonData.coords[0] * heightRatio) + 'px';
           button.style.width = (Math.abs(buttonData.coords[2] - buttonData.coords[0]) * widthRatio) + 'px';
           button.style.height = (Math.abs(buttonData.coords[3] - buttonData.coords[1]) * heightRatio) + 'px';
+          button.style.borderRadius = (Math.abs(buttonData.coords[3] - buttonData.coords[1]) / 32)  + 'px'
           break;
         case 'circle':
           console.log('circle');

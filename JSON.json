@@ -16,7 +16,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen02",
-              "coords": [653, 177, 1203, 364, 16]
+              "coords": [653, 177, 1203, 364]
             }
           ]
         },
@@ -31,7 +31,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen03",
-              "coords": [1068, 323, 1196, 391, 16]
+              "coords": [1068, 323, 1196, 391]
             },
             {
               "name" : "cancel",
@@ -43,7 +43,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen01",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -64,7 +64,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen02",
-              "coords": [98, 882, 265, 954, 16]
+              "coords": [98, 882, 265, 954]
             }
           ]
         },
@@ -79,13 +79,13 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen05",
-              "coords": [488, 250, 785, 426, 16]
+              "coords": [488, 250, 785, 426]
             },
             {
               "name": "previous",
               "shape": "rect",
               "destination": "screen03",
-              "coords": [100, 882, 266, 954, 16]
+              "coords": [100, 882, 266, 954]
             }
           ]
         },
@@ -100,7 +100,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen06",
-              "coords": [1072, 844, 1268, 918, 16]
+              "coords": [1072, 844, 1268, 918]
             },
             {
               "name" : "cancel",
@@ -112,7 +112,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen04",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -127,7 +127,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen07",
-              "coords": [495, 851, 785, 915, 16]
+              "coords": [495, 851, 785, 915]
             },
             {
               "name" : "cancel",
@@ -139,7 +139,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen05",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -154,7 +154,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen08",
-              "coords": [612, 386, 1227, 516, 16]
+              "coords": [612, 386, 1227, 516]
             },
             {
               "name" : "cancel",
@@ -166,7 +166,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen06",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -181,7 +181,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen09",
-              "coords": [588, 285, 671, 351, 16]
+              "coords": [588, 285, 671, 351]
             },
             {
               "name" : "cancel",
@@ -193,7 +193,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen07",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -208,7 +208,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen10",
-              "coords": [1071, 843, 1266, 915, 16]
+              "coords": [1071, 843, 1266, 915]
             },
             {
               "name" : "cancel",
@@ -220,7 +220,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen08",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -235,7 +235,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen11",
-              "coords": [1000, 340, 1105, 442, 16]
+              "coords": [1000, 340, 1105, 442]
             },
             {
               "name" : "cancel",
@@ -247,7 +247,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen09",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -262,7 +262,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen12",
-              "coords": [1123, 342, 1228, 441, 16]
+              "coords": [1123, 342, 1228, 441]
             },
             {
               "name" : "cancel",
@@ -274,7 +274,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen10",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -289,7 +289,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen13",
-              "coords": [904, 375, 1037, 437, 16]
+              "coords": [904, 375, 1037, 437]
             },
             {
               "name" : "cancel",
@@ -301,7 +301,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen11",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -316,7 +316,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen14",
-              "coords": [1072, 844, 1268, 917, 16]
+              "coords": [1072, 844, 1268, 917]
             },
             {
               "name" : "cancel",
@@ -328,7 +328,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen12",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -380,7 +380,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen03",
-              "coords": [1068, 323, 1196, 391, 16]
+              "coords": [1068, 323, 1196, 391]
             },
             {
               "name" : "cancel",
@@ -392,7 +392,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen01",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -413,7 +413,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen02",
-              "coords": [98, 882, 265, 954, 16]
+              "coords": [98, 882, 265, 954]
             }
           ]
         },
@@ -428,13 +428,13 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen05",
-              "coords": [488, 250, 785, 426, 16]
+              "coords": [488, 250, 785, 426]
             },
             {
               "name": "previous",
               "shape": "rect",
               "destination": "screen03",
-              "coords": [100, 882, 266, 954, 16]
+              "coords": [100, 882, 266, 954]
             }
           ]
         },
@@ -449,7 +449,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen06",
-              "coords": [1072, 844, 1268, 918, 16]
+              "coords": [1072, 844, 1268, 918]
             },
             {
               "name" : "cancel",
@@ -461,7 +461,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen04",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -476,7 +476,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen07",
-              "coords": [495, 851, 785, 915, 16]
+              "coords": [495, 851, 785, 915]
             },
             {
               "name" : "cancel",
@@ -488,7 +488,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen05",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -503,7 +503,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen08",
-              "coords": [612, 386, 1227, 516, 16]
+              "coords": [612, 386, 1227, 516]
             },
             {
               "name" : "cancel",
@@ -515,7 +515,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen06",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -530,7 +530,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen09",
-              "coords": [1089, 820, 1236, 873, 16]
+              "coords": [1089, 820, 1236, 873]
             },
             {
               "name" : "cancel",
@@ -542,7 +542,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen07",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -557,7 +557,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen10",
-              "coords": [1137, 390, 1238, 453, 16]
+              "coords": [1137, 390, 1238, 453]
             },
             {
               "name" : "cancel",
@@ -569,7 +569,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen08",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -584,7 +584,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen11",
-              "coords": [1090, 819, 1236, 871, 16]
+              "coords": [1090, 819, 1236, 871]
             },
             {
               "name" : "cancel",
@@ -605,7 +605,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen12",
-              "coords": [614, 386, 1233, 517, 16]
+              "coords": [614, 386, 1233, 517]
             },
             {
               "name" : "cancel",
@@ -617,7 +617,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen10",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -632,7 +632,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen13",
-              "coords": [586, 284, 672, 353, 16]
+              "coords": [586, 284, 672, 353]
             },
             {
               "name" : "cancel",
@@ -644,7 +644,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen11",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -659,7 +659,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen14",
-              "coords": [1071, 843, 1266, 915, 16]
+              "coords": [1071, 843, 1266, 915]
             },
             {
               "name" : "cancel",
@@ -671,7 +671,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen12",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -698,7 +698,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen13",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -725,7 +725,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen14",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -740,7 +740,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen17",
-              "coords": [902, 374, 1036, 437, 16]
+              "coords": [902, 374, 1036, 437]
             },
             {
               "name" : "cancel",
@@ -752,7 +752,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen15",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -767,7 +767,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen18",
-              "coords": [1072, 844, 1268, 917, 16]
+              "coords": [1072, 844, 1268, 917]
             },
             {
               "name" : "cancel",
@@ -779,7 +779,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen16",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -816,7 +816,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen02",
-              "coords": [74, 175, 620, 364, 16]
+              "coords": [74, 175, 620, 364]
             }
           ]
         },
@@ -831,7 +831,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen03",
-              "coords": [58, 212, 606, 328, 16]
+              "coords": [58, 212, 606, 328]
             },
             {
               "name" : "cancel",
@@ -843,7 +843,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen01",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -858,7 +858,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen04",
-              "coords": [448, 474, 827, 589, 16]
+              "coords": [448, 474, 827, 589]
             },
             {
               "name" : "cancel",
@@ -870,7 +870,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen02",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -885,7 +885,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen05",
-              "coords": [139, 330, 1136, 490, 16]
+              "coords": [139, 330, 1136, 490]
             },
             {
               "name" : "cancel",
@@ -897,7 +897,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen03",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -912,7 +912,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen06",
-              "coords": [306, 504, 454, 564, 16]
+              "coords": [306, 504, 454, 564]
             },
             {
               "name" : "cancel",
@@ -924,7 +924,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen04",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -939,7 +939,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen07",
-              "coords": [960, 685, 1216, 760, 16]
+              "coords": [960, 685, 1216, 760]
             },
             {
               "name" : "cancel",
@@ -951,7 +951,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen05",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -966,7 +966,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen08",
-              "coords": [218, 806, 335, 871, 16]
+              "coords": [218, 806, 335, 871]
             },
             {
               "name" : "cancel",
@@ -978,7 +978,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen06",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -993,13 +993,13 @@
               "name": "roop",
               "shape": "rect",
               "destination": "screen08",
-              "coords": [64, 216, 379, 269, 16]
+              "coords": [64, 216, 379, 269]
             },
             {
               "name": "next",
               "shape": "rect",
               "destination": "screen09",
-              "coords": [647, 617, 774, 692, 16]
+              "coords": [647, 617, 774, 692]
             },
             {
               "name" : "cancel",
@@ -1011,7 +1011,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen07",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1026,7 +1026,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen10",
-              "coords": [168, 252, 466, 608, 16]
+              "coords": [168, 252, 466, 608]
             },
             {
               "name" : "cancel",
@@ -1038,7 +1038,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen08",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1053,7 +1053,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen11",
-              "coords": [980, 271, 1081, 340, 16]
+              "coords": [980, 271, 1081, 340]
             },
             {
               "name" : "cancel",
@@ -1065,7 +1065,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen09",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1080,7 +1080,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen12",
-              "coords": [609, 337, 1227, 481, 16]
+              "coords": [609, 337, 1227, 481]
             },
             {
               "name" : "cancel",
@@ -1092,7 +1092,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen10",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1107,7 +1107,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen13",
-              "coords": [1109, 732, 1205, 787, 16]
+              "coords": [1109, 732, 1205, 787]
             },
             {
               "name" : "cancel",
@@ -1119,7 +1119,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen11",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1134,7 +1134,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen14",
-              "coords": [354, 580, 405, 652, 16]
+              "coords": [354, 580, 405, 652]
             },
             {
               "name" : "cancel",
@@ -1146,7 +1146,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen12",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1161,7 +1161,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen15",
-              "coords": [1069, 843, 1266, 917, 16]
+              "coords": [1069, 843, 1266, 917]
             },
             {
               "name" : "cancel",
@@ -1173,7 +1173,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen13",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1188,7 +1188,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen16",
-              "coords": [257, 678, 395, 742, 16]
+              "coords": [257, 678, 395, 742]
             },
             {
               "name" : "cancel",
@@ -1200,7 +1200,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen14",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1215,7 +1215,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen17",
-              "coords": [1074, 259, 1210, 323, 16]
+              "coords": [1074, 259, 1210, 323]
             },
             {
               "name" : "cancel",
@@ -1227,7 +1227,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen15",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1242,7 +1242,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen18",
-              "coords": [1072, 752, 1212, 820, 16]
+              "coords": [1072, 752, 1212, 820]
             },
             {
               "name" : "cancel",
@@ -1254,7 +1254,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen16",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1269,7 +1269,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen19",
-              "coords": [650, 423, 754, 494, 16]
+              "coords": [650, 423, 754, 494]
             },
             {
               "name" : "cancel",
@@ -1281,7 +1281,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen17",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1296,7 +1296,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen20",
-              "coords": [488, 547, 785, 725, 16]
+              "coords": [488, 547, 785, 725]
             },
             {
               "name" : "cancel",
@@ -1308,7 +1308,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen18",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1323,7 +1323,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen21",
-              "coords": [448, 761, 597, 819, 16]
+              "coords": [448, 761, 597, 819]
             },
             {
               "name" : "cancel",
@@ -1335,7 +1335,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen19",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1350,7 +1350,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen22",
-              "coords": [999, 341, 1137, 409, 16]
+              "coords": [999, 341, 1137, 409]
             },
             {
               "name" : "cancel",
@@ -1362,7 +1362,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen20",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1377,7 +1377,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen23",
-              "coords": [1069, 842, 1266, 918, 16]
+              "coords": [1069, 842, 1266, 918]
             },
             {
               "name" : "cancel",
@@ -1389,7 +1389,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen12",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1426,7 +1426,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen02",
-              "coords": [76, 767, 621, 885, 16]
+              "coords": [76, 767, 621, 885]
             }
           ]
         },
@@ -1441,7 +1441,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen03",
-              "coords": [149, 211, 1128, 328, 16]
+              "coords": [149, 211, 1128, 328]
             },
             {
               "name" : "cancel",
@@ -1453,7 +1453,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen01",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1468,7 +1468,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen04",
-              "coords": [167, 353, 464, 459, 16]
+              "coords": [167, 353, 464, 459]
             },
             {
               "name" : "cancel",
@@ -1489,7 +1489,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen05",
-              "coords": [999, 343, 1135, 409, 16]
+              "coords": [999, 343, 1135, 409]
             },
             {
               "name" : "cancel",
@@ -1501,7 +1501,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen03",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1514,15 +1514,15 @@
           "buttons": [
             {
               "name": "roop",
-              "shape": "ract",
+              "shape": "rect",
               "destination": "screen05",
-              "coords": [214, 271, 481, 376, 16]
+              "coords": [214, 271, 481, 376]
             },
             {
               "name": "next",
-              "shape": "ract",
+              "shape": "rect",
               "destination": "screen06",
-              "coords": [428, 527, 626, 735, 16]
+              "coords": [428, 527, 626, 735]
             },
             {
               "name" : "cancel",
@@ -1534,7 +1534,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen04",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1549,7 +1549,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen07",
-              "coords": [489, 319, 788, 498, 16]
+              "coords": [489, 319, 788, 498]
             },
             {
               "name" : "cancel",
@@ -1561,7 +1561,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen05",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1576,7 +1576,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen08",
-              "coords": [290, 421, 386, 496, 16]
+              "coords": [290, 421, 386, 496]
             },
             {
               "name" : "cancel",
@@ -1588,7 +1588,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen06",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1603,7 +1603,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen09",
-              "coords": [150, 321, 448, 497, 16]
+              "coords": [150, 321, 448, 497]
             },
             {
               "name" : "cancel",
@@ -1615,7 +1615,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen07",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1630,7 +1630,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen10",
-              "coords": [449, 760, 596, 819, 16]
+              "coords": [449, 760, 596, 819]
             },
             {
               "name" : "cancel",
@@ -1642,7 +1642,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen08",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1657,7 +1657,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen11",
-              "coords": [998, 339, 1138, 410, 16]
+              "coords": [998, 339, 1138, 410]
             },
             {
               "name" : "cancel",
@@ -1669,7 +1669,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen09",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1684,7 +1684,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen12",
-              "coords": [993, 589, 1131, 657, 16]
+              "coords": [993, 589, 1131, 657]
             },
             {
               "name" : "cancel",
@@ -1696,7 +1696,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen10",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1711,7 +1711,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen13",
-              "coords": [1070, 841, 1266, 918, 16]
+              "coords": [1070, 841, 1266, 918]
             },
             {
               "name" : "cancel",
@@ -1723,7 +1723,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen11",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1738,7 +1738,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen14",
-              "coords": [1069, 842, 1268, 917, 16]
+              "coords": [1069, 842, 1268, 917]
             },
             {
               "name" : "cancel",
@@ -1750,7 +1750,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen12",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1765,7 +1765,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen15",
-              "coords": [1069, 842, 1268, 917, 16]
+              "coords": [1069, 842, 1268, 917]
             },
             {
               "name" : "cancel",
@@ -1777,7 +1777,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen13",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1792,7 +1792,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen16",
-              "coords": [1070, 841, 1266, 918, 16]
+              "coords": [1070, 841, 1266, 918]
             },
             {
               "name" : "cancel",
@@ -1804,7 +1804,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen14",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1819,7 +1819,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen17",
-              "coords": [1070, 841, 1266, 918, 16]
+              "coords": [1070, 841, 1266, 918]
             },
             {
               "name" : "cancel",
@@ -1831,7 +1831,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen15",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1868,7 +1868,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen02",
-              "coords": [74, 767, 621, 884, 16]
+              "coords": [74, 767, 621, 884]
             }
           ]
         },
@@ -1883,7 +1883,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen03",
-              "coords": [148, 373, 1126, 487, 16]
+              "coords": [148, 373, 1126, 487]
             },
             {
               "name" : "cancel",
@@ -1895,7 +1895,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen01",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1910,7 +1910,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen04",
-              "coords": [558, 370, 675, 448, 16]
+              "coords": [558, 370, 675, 448]
             },
             {
               "name" : "cancel",
@@ -1921,8 +1921,8 @@
             {
               "name": "previous",
               "shape": "rect",
-              "destination": "screen02",
-              "coords": [158, 941, 325, 1011, 16]
+              "destination": "screen01",
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1937,7 +1937,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen05",
-              "coords": [1072, 843, 1268, 919, 16]
+              "coords": [1072, 843, 1268, 919]
             },
             {
               "name" : "cancel",
@@ -1949,7 +1949,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen03",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1964,7 +1964,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen06",
-              "coords": [995, 342, 1134, 407, 16]
+              "coords": [995, 342, 1134, 407]
             },
             {
               "name" : "cancel",
@@ -1976,7 +1976,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen04",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },
@@ -1991,7 +1991,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen07",
-              "coords": [627, 494, 741, 537, 16]
+              "coords": [627, 494, 741, 537]
             },
             {
               "name" : "cancel",
@@ -2003,7 +2003,7 @@
               "name": "previous",
               "shape": "rect",
               "destination": "screen05",
-              "coords": [158, 941, 325, 1011, 16]
+              "coords": [158, 941, 325, 1011]
             }
           ]
         },

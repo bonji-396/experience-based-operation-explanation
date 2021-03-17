@@ -11,6 +11,9 @@
   --main-color: #008803;
   --sub-color: #666;
   --base-color: #fff;
+  --next-button-hover-color: #0000ff;
+  --previous-button-hover-color: #ffa500;
+  --cancel-button-hover-color: #ff0000;
 }
 /* reset
 ---------------------------------------------------------------------------- */
@@ -138,7 +141,7 @@ main {
     opacity: 1;
   }
 }
-/* operation-explanation-hedding
+/* #operation-explanation-hedding
 ------------------- */
 #operation-explanation-hedding {
   max-width: 800px;
@@ -146,38 +149,49 @@ main {
 }
 h2 {
   text-align: center;
-  margin: 20px auto;
+  margin: 10px auto;
   color: var(--main-color);
 }
 #operation-explanation-hedding>p {
   margin-bottom: 20px;
+  font-size: 14px;
   line-height: 1.4em;
 }
+/* #operation-explanation-description
+------------------- */
 #operation-explanation-description {
   max-width: 800px;
   margin: 0 auto;
+  display: flex;
 }
 h3 {
-  margin-bottom: 16px;
-}
-#operation-explanation-description>p {
+  width: 20%;
   margin-bottom: 10px;
 }
+#operation-explanation-description>p {
+  width: 80%;
+  margin-bottom: 10px;
+}
+/* #operation-explanation-box
+------------------- */
 #operation-explanation-box {
-  height: calc((95vh - 220px)); /* buttonの位置を設定するため、relativeの幅高さを設定 */
   width: calc((95vh - 220px) * 1.25);
-  margin: 0 auto;
+  height: calc((95vh - 220px));
+  margin: 0 auto 10px;
   position: relative;
   align-items: center;
   text-align: center;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
-#screen-image {
+#operation-explanation-box>img {
   display: block;
-  max-width: 100%;
-  height: 100%;
+  width: 100%;
+  height: auto;
   margin: 0 auto;
 }
-.screen-button{
+.screen-button {
   width: 0;
   height: 0;
   box-sizing: border-box;
@@ -189,43 +203,78 @@ h3 {
   border: 0;
   border-radius: 0;
   z-index: 10;
-  background-color: var(--sub-color);
   opacity: 0;
   transition: 0.4s;
+  animation-delay: 0.5s;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+  animation-name: flash;
+}
+.screen-button[data-name="next"]{
+  /* background-color: var(--next-button-hover-color); */
+  animation-iteration-count: infinite;
+}
+.screen-button[data-name="next"]::before{
+  position: absolute;
+  content: "";
+  vertical-align: middle;
+  top: -20px;
+  left: calc(50% - 10px);
+  right: 10px;
+  box-sizing: border-box;
+  width: 0px;
+  height: 0px;
+  border-top: 10px solid var(--main-color);
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid transparent;
+}
+.screen-button[data-name="previous"]{
+  background-color: var(--previous-button-hover-color);
+  animation-iteration-count: 2;
+}
+.screen-button[data-name="cancel"]{
+  background-color: var(--cancel-button-hover-color);
+  animation-iteration-count: 2;
 }
 .screen-button:hover{
   background-color: rgba(255, 255, 255, 0);
   opacity: 1;
-  box-shadow: 0 0 4px 20px red;
-  animation: 2s ease 0s 2 normal running boderFadeInOut;
+  animation: none;
+  transform: none;
 }
-/* 画像内ボタンをホバーする前にアニメーションで位置表示する */
-@keyframes boderFadeInOut {
-  0% {
-    filter: box-shadow(0 0 0 0 red);
-  }
+.screen-button:hover[data-name="next"]{
+  box-shadow: 0 0 4px 10px var(--next-button-hover-color);
+}
+.screen-button:hover[data-name="previous"]{
+  box-shadow: 0 0 4px 10px var(--previous-button-hover-color);
+}
+.screen-button:hover[data-name="cancel"]{
+  box-shadow: 0 0 4px 10px var(--cancel-button-hover-color);
+}
+@keyframes flash { 
+  0%, 100% {
+    opacity: 0;
+  } 
   50% {
-    filter: box-shadow(0 0 4px 20px red);
-  }
-  80% {
-    filter: box-shadow(0 0 4px 20px red);
-  }
-  100% {
-    filter: box-shadow(0 0 0 0 red);
-  }
+    opacity: 1;
+  } 
 }
-/* アニメーション追加 */
-/* #operation-explanation-box>*:not(.screen-button) {
-  opacity: 0.3;
+@keyframes hoge { 
+  0%, 100% {
+    opacity: 0;
+  } 
+  50% {
+    opacity: 1;
+  } 
 }
-.screen-button {
-  opacity: 1;
-} */
-#operation-explanation-box>img {
-  box-sizing: border-box;
-  height: calc((95vh - 220px)); /* javascrtiptで幅を取得するために親要素と一緒の幅指定する */
-  width: calc((95vh - 220px) * 1.25);
-  object-fit: contain;
+
+/* #supplementary-explanation
+------------------- */
+#supplementary-explanation {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 12px;  
 }
 /* footer
 -------------------------------------------------------- */
