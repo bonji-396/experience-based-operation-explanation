@@ -1,7 +1,6 @@
 /* 
  FIX: バグ（サイズ変更時にScteenButtonの生成がうまくいっていない。）
- FIX: CSS 疑似要素のスタイルをJavaScriptから充てたい（widhtを計算してwidthを設定したい）
- FIX: 画面画像のフルードイメージ（幅）対応（背景画像にするべきか？）
+ FIX: ScreenButtonの位置計算を高さから幅を基準に変更する
  TODO: スマートフォン対応（CSS）
  TODO: JR 共通部のレイアウト＆CSS
  TODO: リファクタリング

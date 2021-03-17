@@ -107,8 +107,8 @@ main {
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%, -50%);
-  height: 95vh;
   width: 95vw;
+  height: 95vh;
   padding: 16px;
   border-radius: 24px;
   box-shadow: 0 0 20px #333;
@@ -178,14 +178,13 @@ h3 {
   animation: typing 2s steps(50);
   margin-bottom: 10px;
 }
-
-
-
 /* #operation-explanation-box
 ------------------- */
 #operation-explanation-box {
-  width: calc((95vh - 220px) * 1.25);
-  height: calc((95vh - 220px));
+  width: calc((95vw - 220px));
+  max-width: 800px;
+  height: calc((95vw - 220px) * 0.8); /* 縦横比率を保つ */
+  max-height: calc(800px * 0.8);
   margin: 0 auto 10px;
   position: relative;
   align-items: center;
@@ -195,10 +194,10 @@ h3 {
   background-size: cover;
 }
 #operation-explanation-box>img {
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: 0 auto;
+  /* display: block; */
+  max-width: 100%;
+  height: 100%;
+  /* margin: 0 auto; */
 }
 .screen-button {
   width: 0;
@@ -219,11 +218,7 @@ h3 {
   animation-fill-mode: both;
   animation-name: flash;
 }
-.screen-button[data-name="next"]{
-  /* background-color: var(--next-button-hover-color); */
-  animation-iteration-count: infinite;
-}
-.screen-button[data-name="next"]::before{
+.screen-button::before{
   position: absolute;
   content: "";
   vertical-align: middle;
@@ -233,18 +228,27 @@ h3 {
   box-sizing: border-box;
   width: 0px;
   height: 0px;
-  border-top: 10px solid var(--main-color);
   border-right: 10px solid transparent;
   border-bottom: 10px solid transparent;
   border-left: 10px solid transparent;
 }
+.screen-button[data-name="next"]{
+  animation-iteration-count: infinite;
+}
+.screen-button[data-name="next"]::before{
+  border-top: 10px solid var(--main-color);
+}
 .screen-button[data-name="previous"]{
-  background-color: var(--previous-button-hover-color);
   animation-iteration-count: 2;
 }
+.screen-button[data-name="previous"]::before{
+  border-top: 10px solid var(--previous-button-hover-color);
+}
 .screen-button[data-name="cancel"]{
-  background-color: var(--cancel-button-hover-color);
   animation-iteration-count: 2;
+}
+.screen-button[data-name="cancel"]::before{
+  border-top: 10px solid var(--cancel-button-hover-color);
 }
 .screen-button:hover{
   background-color: rgba(255, 255, 255, 0);
