@@ -121,6 +121,7 @@ class Controller {
       console.log('ハッシュ値変更！！！！！！')
       if(window.location.hash.slice(1)) {
         this.currentTitleID = window.location.hash.slice(1);
+        this.currentScreenID = 'screen01';
         this.displayOperationExplanationView();
       }
     });  
@@ -149,9 +150,9 @@ class Controller {
                 !event.target.closest('#operation-explanation')) {
         // 操作説明画面を閉じる
         this.closeOperationExplanationView();
+        this.currentScreenID = 'screen01';
         console.log('閉じた！！');
       }
-    // }, { once: true }); // 要素に対してのイベント出ないのでイベントが残り重複する可能性があるため。
     });
   }
   /* クローズボタンをクリックした時の処理
@@ -160,6 +161,7 @@ class Controller {
     document.getElementById('close').addEventListener('click', () => {
       // 操作説明画面を閉じる
       this.closeOperationExplanationView();
+      this.currentScreenID = 'screen01';
     });
   }
   /* Window表示サイズが変化した時の処理
