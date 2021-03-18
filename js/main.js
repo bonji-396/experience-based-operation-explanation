@@ -1,14 +1,14 @@
 /* 
- FIX: closeや、view、redrawのタイミングで状態情報の整合性を図る
- FIX: ScreenButtonの位置計算を高さから幅を基準に変更する
- TODO: スマートフォン対応（CSS）
- TODO: JR 共通部のレイアウト＆CSS
- TODO: リファクタリング
- TODO: ポートフォリオ用ページ
- TODO: ポートフォリオ用にgithub README.md
- TODO: コメントを削除
- TODO: mikuro.worksに実装
- TODO: github公開
+ FIX: closeや、view、redrawのタイミングで状態情報の整合性を図る 3/18
+ TODO: スマートフォン対応（CSS）    3/18
+ TODO: スマートフォン対応（CSS）    3/18
+ TODO: JR 共通部のレイアウト＆CSS   3/19
+ TODO: リファクタリング             3/20
+ TODO: ポートフォリオ用ページ        3/20
+ TODO: ポートフォリオ用にgithub README.md specification.mdを追加　 3/20
+ TODO: コメントを削除　　　　　 3/20
+ TODO: mikuro.worksに実装　　 3/20
+ TODO: github公開　　　　　　 3/20　
  */
 /* ----------------------------------------------------------------------------
  定数の定義

@@ -8,18 +8,29 @@
   <link rel="stylesheet" href="css/commentary.css">
 </head>
 <body>
+  <header>
+    <ul>
+      <li><a href="">GitHub</a></li>
+      <li><a href="">Site</a></li>
+    </ul>    
+  </header>
   <main>
     
-    <h1>〇〇の詳細</h1>
+    <h1>体感型、操作説明ページの詳細</h1>
     <section>
-      <div class="site_image">
-        <a href="#" target="_blank" rel="noopener"><img src="../img/site01.png" alt=""></a>        
+      <div id="moc_image">
+        <a href="#" target="_blank" rel="noopener"><img src="img/screenshot.png" alt=""></a>        
       </div>
     </section>
+
     <section class="overview">
       <h2>概要</h2>
-      <p class="overview">この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、</p>    
+      <p>
+        <a href="https://www.jreast.co.jp/mv-guide/demo/">指定席券売機ご利用案内</a>
+      </p>
+      <!-- ターゲットページと作成したページの並べて表記（変更前=>変更後） -->  
     </section>
+
     <section class="discription">
       <h2>作業内容</h2>
       <div class="discription-boxs">
@@ -47,44 +58,82 @@
         </div>  
       </div>
     </section>
-    <section class="concept">
-      <h2>コンセプト</h2>
+
+    <section class="request-details">
+      <h2>依頼内容</h2>
       <p>クライアントより、既存ページの改修を依頼された。</p>
-    </section>  
+    </section>
+
     <section>
       <div class="link">
         <p><a href="#" target="_blank" rel="noopener">サイトへ</a></p>
       </div>
     </section>
-    <section class="concept">
+
+    <section>
       <h2>仕様</h2>
-      <p>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、</p>
-      <p>使用したカラー: ddddddd</p>
+      <p></p>
+      <p></p>
     </section>
-    <section class="concept">
-      <h2>jQuery、フレームワークを使わない</h2>
-      <p>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、</p>
-      <p>使用したカラー: ddddddd</p>
+
+    <section>
+      <h2>VanillaScript</h2>
+      <p>jQuery、他のフレームワークを使わない</p>
+      <p></p>
     </section>
-    <section class="concept">
+
+    <section>
       <h2>Animation</h2>
-      <p>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、</p>
-      <p>使用したカラー: ddddddd</p>
+      <p></p>
+      <p></p>
     </section>
-    <section class="concept">
+
+    <section>
+      <h2></h2>
+      <p></p>
+      <p></p>
+    </section>
+
+    <section class="platform">
       <h2>実装先</h2>
-      <p>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、</p>
-      <p>使用したカラー: ddddddd</p>
+      <p>Amazon S3, Amazon CloudFront, Amazon Route53, AWS Certificate Managerにて、CDN、オリジナルドメイン、SSLで提供実装を行いました。</p>
+      <dl>
+        <dt>Amazon S3</dt>
+        <dd>サーバレス（サーバーマシン、Apahe等のミドルウェア実装を回避）で実装するため、静的コンテンツ実装先として利用しました。</dd>
+        <dt>Amazon CloudFront</dt>
+        <dd>CDNとして提供するため利用しました。</dd>
+        <dt>Amazon Route53</dt>
+        <dd>CloudFront経由でかつ、S3のエンドポイントをオリジンとして紐付けするためにDNSとして利用しました。</dd>
+        <dt>AWS Certificate Manager</dt>
+        <dd>SSLを（最近ウェブでは必須のため）利用しました。ドメインの証明書を発行。</dd>
+      </dl>
+      <!-- 導入メリット を追記 -->
+      <p>↓↓↓↓↓↓↓↓↓ ここに構成図を挿入 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓</p>
     </section>
-    <section class="concept">
+
+    <section>
       <h2>苦労した点</h2>
-      <p>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、</p>
-      <p>使用したカラー: ddddddd</p>
+      <dl>
+        <dt>非同期通信</dt>
+        <dd>XMLHttpRequest、Fetchのとちらにしろ、非同期通信の場合には、「その取得データ取得と取得後の表示を（DOMに）反映するまでの一連の処理は同じタイミング（コールバックも含めて、同じ処理スコープ内）で全てお行わないとトラブルになる。」ということの体得に苦労しました。
+          他のタイミングで利用する場合は、Web Storate APIを利用するなどでシリアライズするか、一旦DOMに反映してそれを利用するかのような回避策もあることも分かりました。
+        今回のように全ての情報を取得してから動作するようなアプリでは、最初からDOMに構成したページを作り、その上でdisplay:none等の切り替えでページが変化する方が、場合によっては良いのかも思いました。</dd>
+        <dt>this</dt>
+        <dd>従来の関数とアロー関数内、クラスメソッドのthisはそれぞれ違うということに気付くのに2日かかりました。</dd>
+        <dt>プロトタイプベースのオブジェクト指向</dt>
+        <dd>過去に学んだ、オブジェクト指向プログラミングはそのほとんどは、クラスベースオブジェクト指向言語であったため、コーディングすればするほど混乱を招いた。
+          コンストラクタはインスタンス変数が使えてしまうように見えるし、メソッドのオーバーロードは行えないなど、非常に考え方に苦労しました。
+          結局９割以上コーディングを終えた時点でJavaScriptでのClassはシンタックスシュガー（糖衣構文）であることが分かり、クラス自体は存在しないことがわかった（結局はオブジェクト（連想配列とプロトタイプ））</dd>
+        <dt>jsonで定義した、coordsを手作業で指定する</dt>
+        <dd>70枚の画像全てを調べてボタンの位置を確認する手作業が非常に時間がかかりました。共通する部分はほぼ同じなのですが、それでもこの作業が、一番時間がかかっています。これらの作業の効率化（アプリ化）を考えるべきだと思いました。</dd>
+      </dl>
+      
     </section>
-    <section class="concept">
+    
+    <section>
       <h2>今後</h2>
-      <p>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、</p>
-      <p>使用したカラー: ddddddd</p>
+      <p></p>
+      <p></p>
     </section>
 
   </main>

@@ -49,11 +49,11 @@ h1 {
 section {
   margin-bottom: 60px;
 }
-.site_image {
+#moc-image {
   max-width: 800px;
   margin:  0 auto;
 }
-.site_image>a>img {
+#moc-image>a>img {
   /* filter: drop-shadow(0 0 5px #fff); */
   animation-name: boderFadeIn;
   animation-timing-function: linear;
@@ -62,7 +62,7 @@ section {
   animation-direction: alternate;
   animation-iteration-count:2;
 }
-.site_image>a:hover {
+#moc-image>a:hover {
   filter: drop-shadow(0 0 8px --main-color);
 }
 @keyframes boderFadeIn {
@@ -98,6 +98,15 @@ h3 {
 }
 .link a:hover {
   color: var(--main-color);
+}
+dl {
+  
+}
+dt {
+
+}
+dd {
+
 }
 /* footer
 -------------------------------------------------------- */
