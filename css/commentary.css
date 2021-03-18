@@ -1,0 +1,103 @@
+@charset 'utf-8';
+/* custom properties
+---------------------------------------------------------------------------- */
+:root {
+  --main-color: #333333;
+}
+/* reset
+---------------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+html, body, h1, h2, h3, p, ul, li, dl, dt, dd {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  line-height: 1.0;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+img {
+  vertical-align: bottom;
+  max-width: 100%;
+  height: auto;
+}
+/* for pc
+---------------------------------------------------------------------------- */
+/* common
+-------------------------------------------------------- */
+body {
+  padding: 10px;
+}
+/* header
+-------------------------------------------------------- */
+/* main
+-------------------------------------------------------- */
+main {
+  max-width: 960px;
+  margin: 0 auto;
+}
+h1 {
+  margin: 80px;
+  text-align: center;
+}
+section {
+  margin-bottom: 60px;
+}
+.site_image {
+  max-width: 800px;
+  margin:  0 auto;
+}
+.site_image>a>img {
+  /* filter: drop-shadow(0 0 5px #fff); */
+  animation-name: boderFadeIn;
+  animation-timing-function: linear;
+  animation-duration: 1s;
+  /* animation-delay: 1s; */
+  animation-direction: alternate;
+  animation-iteration-count:2;
+}
+.site_image>a:hover {
+  filter: drop-shadow(0 0 8px --main-color);
+}
+@keyframes boderFadeIn {
+  0% {
+    filter: drop-shadow(0 0 0 --main-color);
+  }
+  50% {
+    filter: drop-shadow(0 0 8px --main-color);
+  }
+  80% {
+    filter: drop-shadow(0 0 8px --main-color);
+  }
+  100% {
+    filter: drop-shadow(0 0 0 --main-color);
+  }
+}
+h2 {
+  margin-bottom: 40px;
+}
+h3 {
+  margin-bottom: 30px;
+}
+.discription-boxs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+  row-gap: 20px;
+}
+.box {
+  padding: 16px;
+  border: 2px solid var(--main-color);
+  border-radius: 6px;
+}
+.link a:hover {
+  color: var(--main-color);
+}
+/* footer
+-------------------------------------------------------- */

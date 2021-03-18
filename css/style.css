@@ -216,7 +216,7 @@ h3 {
   animation-delay: 0.5s;
   animation-duration: 0.5s;
   animation-fill-mode: both;
-  animation-name: flash;
+  animation-name: bounceindown;
 }
 .screen-button::before{
   position: absolute;
@@ -236,7 +236,7 @@ h3 {
   animation-iteration-count: infinite;
 }
 .screen-button[data-name="next"]::before{
-  border-top: 10px solid var(--main-color);
+  border-top: 10px solid var(--next-button-hover-color);
 }
 .screen-button[data-name="previous"]{
   animation-iteration-count: 2;
@@ -273,13 +273,24 @@ h3 {
     opacity: 1;
   } 
 }
-@keyframes hoge { 
-  0%, 100% {
-    opacity: 0;
+@keyframes bounceindown { 
+  0% { 
+      opacity: 0; 
+      transform: translateY(-10px); 
   } 
-  50% {
-    opacity: 1;
+  60% { 
+      opacity: 1; 
+      transform: translateY(5px); 
   } 
+  80% { 
+      transform: translateY(-5px); 
+  } 
+  100% { 
+      transform: translateY(0); 
+  } 
+}
+.bounceindown { 
+  animation-name: bounceindown; 
 }
 
 /* #supplementary-explanation
