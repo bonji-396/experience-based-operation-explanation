@@ -36,7 +36,7 @@ for index, sectionElm in enumerate(sectionElements):
         buttonObj = {}
         buttonObj['name'] = ''
         buttonObj['shape'] = ''
-        buttonObj['screenTransitionDestination'] =  'screen{:0=2}'.format(index + 2)
+        buttonObj['destination'] = 'screen{:0=2}'.format(index + 2)
         buttonObj['coords'] = []
         screenObj['buttons'] = []
         screenObj['buttons'].append(buttonObj)

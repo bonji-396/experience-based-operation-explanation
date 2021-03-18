@@ -56,14 +56,14 @@ body.bg {
 -------------------------------------------------------- */
 header {
   width: 100%;
-  height: 100px;
+  height: 180px;
   background-color: var(--sub-color);
 }
 /* main
 -------------------------------------------------------- */
 main {
   width: 100%;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 180px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,7 +78,7 @@ main {
 }
 .btn {
   width: 100%;
-  height: calc((100vh - 140px) / 3 - 20px);
+  height: calc((100vh - 180px) / 3 - 20px);
 }
 .btn>a {
   display: block;
@@ -89,12 +89,12 @@ main {
   color: var(--base-color);
   font-size: 38px;
   text-align: center;
-  line-height:  calc((100vh - 140px) / 3 - 20px);
-  padding: 0 30px;
+  line-height:  calc((100vh - 180px) / 3 - 20px);
+  padding: 0 20px;
 }
 .btn>a.twoline {
-  padding: calc(((100vh - 140px) / 3 - 20px) / 6 ) 30px;
-  line-height: calc(((100vh - 140px) / 3 - 20px) / 3 );
+  padding: calc(((100vh - 180px) / 3 - 20px) / 6 ) 20px;
+  line-height: calc(((100vh - 180px) / 3 - 20px) / 3 );
 }
 .btn>a:hover {
   opacity: 0.8;

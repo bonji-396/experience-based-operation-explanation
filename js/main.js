@@ -1,14 +1,14 @@
 /* 
- FIX: closeや、view、redrawのタイミングで状態情報の整合性を図る 3/18
- TODO: スマートフォン対応（CSS）    3/18
- TODO: スマートフォン対応（CSS）    3/18
  TODO: JR 共通部のレイアウト＆CSS   3/19
- TODO: リファクタリング             3/20
- TODO: ポートフォリオ用ページ        3/20
+ TODO: スマートフォン対応（CSS）    3/19
+
+ TODO: リファクタリング            3/20
+ TODO: ポートフォリオ用ページ       3/20
  TODO: ポートフォリオ用にgithub README.md specification.mdを追加　 3/20
- TODO: コメントを削除　　　　　 3/20
- TODO: mikuro.worksに実装　　 3/20
- TODO: github公開　　　　　　 3/20　
+ TODO: closeや、view、redrawのタイミングで状態情報の整合性を図る 3/18
+ TODO: コメントを削除             3/20
+ TODO: mikuro.worksに実装        3/20
+ TODO: github公開                3/20　
  */
 /* ----------------------------------------------------------------------------
  定数の定義
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 }, false);
 /* ----------------------------------------------------------------------------
-  画面管理データ保持 DataRetain - JSONデータをダウンロードして保持する。
+ DataRetain - JSONデータをダウンロードして保持する
 ---------------------------------------------------------------------------- */
 class DataRetain {
   constructor(key, url) {
@@ -60,7 +60,7 @@ class DataRetain {
   }
 }
 /* ----------------------------------------------------------------------------
- Controller クラス - DataRetainからデータ参照、各ViewControllerへの指示、状態保持等
+ Controller - DataRetainからデータ参照、各ViewControllerへの指示、状態保持等
 ---------------------------------------------------------------------------- */
 class Controller {
   constructor(dataRetain) {
@@ -200,10 +200,11 @@ class Controller {
       }
     }
   }
-  // TODO: ResizeObserverとMutationObserverを実装する
+  
+  // ResizeObserverとMutationObserverを実装でも良いかもしれない・・・
 }
 /* ----------------------------------------------------------------------------
- DOM表示制御クラス。 ViewController
+  ViewController - DOM生成表示
 ---------------------------------------------------------------------------- */
 class ViewController {
   /* constructor +
@@ -247,7 +248,7 @@ class ViewController {
   }
 }
 /* ----------------------------------------------------------------------------
- 購入方法選択画面の表示制御クラス。
+ SelectAPurchaseMethodViewController - 購入方法選択画面の表示制御クラス。
 ---------------------------------------------------------------------------- */
 class SelectAPurchaseMethodViewController extends ViewController {
   constructor(idName = 'select-a-purchase-method') {
@@ -297,7 +298,7 @@ class SelectAPurchaseMethodViewController extends ViewController {
   }
 }
 /* ----------------------------------------------------------------------------
- 操作説明画面の表示制御クラス。
+ OperationExplanationViewController - 操作説明画面の表示制御クラス。
 ---------------------------------------------------------------------------- */
 class OperationExplanationViewController extends ViewController {
   constructor(idName = 'operation-explanation' ) {
