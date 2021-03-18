@@ -98,7 +98,7 @@ class Controller {
     this.currentTitleData = this.getTitleDataToBeDisplayed();
     // 操作説明の画面を表示
     const screen = this.extractDisplaydataMatchesScreenID(this.currentTitleData, this.currentScreenID);
-    this.operationExplanationView.view(this.currentTitleData, screen);
+    this.operationExplanationView.view(this.currentTitleData, screen); // ###########
     // クローズボタンをクリックした時の処理
     this.defineCloseButtonEvents();
     // Window表示サイズが変化した時の処理
@@ -134,7 +134,7 @@ class Controller {
       if (event.target.closest('.screen-button')) {
         console.log('ボタンがクリックされたよ');
         // 遷移先の表示データを引き渡して操作説明表示部に再表示させる
-        this.operationExplanationView.screenReDraw(
+        this.operationExplanationView.screenReDraw( //##########
           // 遷移先の表示データと、データセット（遷移先スクリーン名）を取得し引数とする
           this.extractDisplaydataMatchesScreenID(
             this.currentTitleData,
@@ -171,7 +171,7 @@ class Controller {
       // 画像サイズが変更された場合
       console.log(this.operationExplanationView);
       if(this.operationExplanationView.checkScreenImageReSize()){
-        // 画像ボタンの再描画
+        // 画像ボタンの再描画　#########
         this.operationExplanationView.buttonsReDraw(
           // 現在のスクリーンデータを取得し引数とする
           this.extractDisplaydataMatchesScreenID(
@@ -302,8 +302,8 @@ class SelectAPurchaseMethodViewController extends ViewController {
 class OperationExplanationViewController extends ViewController {
   constructor(idName = 'operation-explanation' ) {
     super(idName);
-    this.imagewidth = 0;
-    this.imageHeight = 0;
+    this.imagewidth = 0; // リサイズチェック用のリサイズ前の幅を格納
+    this.imageHeight = 0;// リサイズチェック用のリサイズ前の高さを格納 
     this.imageNaturalWidth = 0;
     this.imageNaturalHeight = 0;
   }
@@ -414,59 +414,59 @@ class OperationExplanationViewController extends ViewController {
     closeBtn.textContent = '✖️';
     return closeBtn;
   }
-  /* TODO:もう少し整理する。
-   画面遷移ボタン の生成
+  /*
+   画面遷移ボタンの生成し画像の上にセットする
   ------------------------------------------------------ */
   setScreenButton(screen){
     const box = document.getElementById('operation-explanation-box');
     const image = document.getElementById('screen-image');
     console.log(`ow:${image.naturalWidth}, oh:${image.naturalHeight}, ${image.width}x${image.height}`);
 
-    // TODO: this.imagewidth等は本当に必要か？メソッド内取得でいいのでは？
-
     this.imagewidth = image.width;
     this.imageHeight = image.height;
-    this.imageNaturalWidth = image.naturalWidth;
-    this.imageNaturalHeight = image.naturalHeight;
-    const widthRatio = image.width / image.naturalWidth
-    const heightRatio = image.height / image.naturalHeight
+    let widthRatio = image.width / image.naturalWidth;
+    let heightRatio = image.height / image.naturalHeight;
 
+    // 画像内のボタンをそれぞれ生成し追加
     screen.buttons.forEach((buttonData)=>{
-      const button = document.createElement('div');
-      button.className = 'screen-button';
-      // button.setAttribute('data-destination', buttonData.destination);
-      button.dataset.destination = buttonData.destination;
-      button.dataset.name = buttonData.name;
-
-      if (buttonData.name == 'next') {
-        
-      }
-
-      // 四角形（rectタグ）; 円（circleタグ）; 楕円（ellipseタグ）; 直線（lineタグ）; 折れ線（polylineタグ）; 多角形（polygonタグ）; パス（pathタグ）; 画像（imageタグ）; 文字列（textタグ）
-      switch (buttonData.shape) {
-        case 'rect':
-          console.log('rect');
-          button.style.top = (buttonData.coords[1] * widthRatio) + 'px';
-          button.style.left = (buttonData.coords[0] * heightRatio) + 'px';
-          button.style.width = (Math.abs(buttonData.coords[2] - buttonData.coords[0]) * widthRatio) + 'px';
-          button.style.height = (Math.abs(buttonData.coords[3] - buttonData.coords[1]) * heightRatio) + 'px';
-          button.style.borderRadius = (Math.abs(buttonData.coords[3] - buttonData.coords[1]) / 32)  + 'px'
-          break;
-        case 'circle':
-          console.log('circle');
-          button.style.top = ((buttonData.coords[1] - buttonData.coords[2]) * widthRatio) + 'px';
-          button.style.left = ((buttonData.coords[0] - buttonData.coords[2]) * heightRatio) + 'px';
-          button.style.width = (buttonData.coords[2] * 2 * widthRatio) + 'px';
-          button.style.height = (buttonData.coords[2] * 2 * widthRatio) + 'px';
-          button.style.borderRadius = '50%';
-          break;
-        default:
-          console.log(buttonData.shape);
-      }
-      box.appendChild(button);
+      box.appendChild(this.createScreenButtons(buttonData, widthRatio, heightRatio));
     }); 
   }
-  /*  画像内ボタンの削除 */
+  /*
+   画面遷移ボタンの生成
+  ------------------------------------------------------ */
+  createScreenButtons(buttonData, widthRatio, heightRatio){
+    const button = document.createElement('div');
+    button.className = 'screen-button';
+    // button.setAttribute('data-destination', buttonData.destination);
+    button.dataset.destination = buttonData.destination; // データセットで遷移先を指定
+    button.dataset.name = buttonData.name; // データセットで役割（名前）を指定
+
+    // 四角形（rectタグ）; 円（circleタグ）; 楕円（ellipseタグ）; 直線（lineタグ）; 折れ線（polylineタグ）; 多角形（polygonタグ）; パス（pathタグ）; 画像（imageタグ）; 文字列（textタグ）
+    switch (buttonData.shape) {
+      case 'rect':
+        console.log('rect');
+        button.style.top = (buttonData.coords[1] * widthRatio) + 'px';
+        button.style.left = (buttonData.coords[0] * heightRatio) + 'px';
+        button.style.width = (Math.abs(buttonData.coords[2] - buttonData.coords[0]) * widthRatio) + 'px';
+        button.style.height = (Math.abs(buttonData.coords[3] - buttonData.coords[1]) * heightRatio) + 'px';
+        button.style.borderRadius = (Math.abs(buttonData.coords[3] - buttonData.coords[1]) / 32)  + 'px'
+        break;
+      case 'circle':
+        console.log('circle');
+        button.style.top = ((buttonData.coords[1] - buttonData.coords[2]) * widthRatio) + 'px';
+        button.style.left = ((buttonData.coords[0] - buttonData.coords[2]) * heightRatio) + 'px';
+        button.style.width = (buttonData.coords[2] * 2 * widthRatio) + 'px';
+        button.style.height = (buttonData.coords[2] * 2 * heightRatio) + 'px';
+        button.style.borderRadius = '50%';
+        break;
+      default:
+        console.log(buttonData.shape);
+    }
+    return button;
+  }
+  /*  画像内ボタンの削除 
+  ------------------------------------------------------ */
   removeScreenButtons(){
     const box = document.getElementById('operation-explanation-box');
     const buttons = document.getElementsByClassName('screen-button');
@@ -476,13 +476,15 @@ class OperationExplanationViewController extends ViewController {
       box.removeChild(button);
     }
   }
-  /* 画像内ボタンの再描画 */
+  /* 画像内ボタンの再描画 
+  ------------------------------------------------------ */
   buttonsReDraw(screen){
     console.log('buttonを表示しなおします。！！！！！！！')
     this.removeScreenButtons();
     this.setScreenButton(screen);
   }
-  /* 画像のリサイズチェック */
+  /* 画像のリサイズチェック 
+  ------------------------------------------------------ */
   checkScreenImageReSize() {
     const image = document.getElementById('screen-image');
     if (this.imagewidth === image.width && this.imageHeight === image.height) {

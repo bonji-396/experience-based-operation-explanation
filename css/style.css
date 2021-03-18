@@ -14,6 +14,8 @@
   --next-button-hover-color: #0000ff;
   --previous-button-hover-color: #ffa500;
   --cancel-button-hover-color: #ff0000;
+
+  --aspectRatio: 0.8;
 }
 /* reset
 ---------------------------------------------------------------------------- */
@@ -183,8 +185,8 @@ h3 {
 #operation-explanation-box {
   width: calc((95vw - 220px));
   max-width: 800px;
-  height: calc((95vw - 220px) * 0.8); /* 縦横比率を保つ */
-  max-height: calc(800px * 0.8);
+  height: calc((95vw - 220px) * var(--aspectRatio)); /* 縦横比率を保つ：イメージを格納するBOXの幅を基準とした比率 */
+  max-height: calc(800px * var(--aspectRatio));
   margin: 0 auto 10px;
   position: relative;
   align-items: center;
