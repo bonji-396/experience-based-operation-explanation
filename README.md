@@ -8,7 +8,7 @@
 
 - 機器メーカのHPに掲載する、対象機器の操作説明ページ [指定席券売機ご利用案内](https://www.jreast.co.jp/mv-guide/demo/)  の新案ページとして、指定席券売機の操作説明を（モックアップ型）体験型で行うページに改変してほしい。
 
-![output](https://user-images.githubusercontent.com/71716610/111769395-8a5de200-88ec-11eb-95bd-4cd22b9b9f4f.gif width=30%)
+![output](https://user-images.githubusercontent.com/71716610/111769395-8a5de200-88ec-11eb-95bd-4cd22b9b9f4f.gif widht=30%)
 
 
 ## ヒアリング
