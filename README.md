@@ -240,7 +240,7 @@
 リンクとなるボタンはダミーとして１つだけ設定
 
 
-```
+```python downloadToJson.py
 import requests
 from bs4 import BeautifulSoup
 import json
@@ -307,7 +307,7 @@ python3 text.py > a.json
 
 [実行結果](testpage/a.json)
 
-```
+```python downloadImage.py
 [
   {
     "titleID": "title01",
