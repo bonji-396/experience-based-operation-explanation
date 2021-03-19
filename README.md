@@ -95,9 +95,10 @@
 
 ### 各ページのワイヤーフレーム
 
-![ワイヤーフレーム](wireframe.png "指定席券売機ご利用案内")
+![ワイヤーフレーム](img/wireframe.png "指定席券売機ご利用案内")
 
 ## コンテンツ幅
+
 <dl>
   <dt>コンテンツ最大幅</dt>
   <dd>.container { max-width: 1024px; }</dd>
@@ -109,10 +110,7 @@
   <dd>@media screen and (max-width: 480px) { }</dd>
 </dl>
 
-
-
 ## （要件を満たすための）実現方法と調査
-
 
 ### JSON - 画面遷移の制御やメンテンスのため、画面コンテンツデータに関して
 
@@ -130,78 +128,52 @@
 - 各スクリーンにはボタンがいくつか存在し、そのボタンの位置を元画面画像のサイズに合わせた座標をcoords値として設定する。 
 
 
-
-
 ### 各画面のボタンの構成と座標位置
+元画像で以下の座標を調査し。
 
-border-radius での指定、clip-path: polygon　で、rect形以外を対応
+- rect : 頂点1のx座標, 頂点1のy座標, 頂点2のx座標, 頂点2のy座標
+- circle : 円の中心のx座標, 円の中心のy座標, 円の半径
+- poly : x,yの組のセットを好きな数だけ並べる
 
-rect
-頂点1のx座標, 頂点1のy座標, 頂点2のx座標, 頂点2のy座標
+### 各画面のボタンのレスポンシブ対応
+表示する画像の表示幅と元幅を計算し、表示位置・大きさを算出する。
 
-circle
-円の中心のx座標, 円の中心のy座標, 円の半径
-
-poly
-x,yの組のセットを好きな数だけ並べる
-
-
-#### coordsのレスポンシブ対応
-イメージマップを利用するとき、フルードイメージの場合は、coords情報を表示画像サイズに合わせて変更する必要がある。
-
-##### 解決策
-
-- JSONデータにて表示する画像や、遷移先情報、coords値を記載。coords値は元画像サイズに合わせたものとする。
-- ① javascriptにて、画像表示など画面遷移を毎に要素を描画するため、その際に画像の表示サイズを取得する。
-- ② 以下の公式にてcoords情報を書き換える
-  - 元画像サイズ（1280x1024）
-coords：660 177 1204 365
-  - 表示画像サイズ（800x640）  
-coords：412 110 752 228
-
-#### ボタンのホバー時の処理   
-
+### ボタンのホバー時の処理   
 従来のイメージマップの場合、areaの枠を消すCSSは適用できるがその他は不可だった。  
 よって上記「方法１」、「方法２」の実装は断念
 
 
-
-## 実装方法
+## 実装
 
 以下の方法で実装する
 
-### ページの実装方法
-
+### 利用技術
 - HTML
 - CSS
-- SVG
 - JSON
-- Javascript
+- JavaScript
 
-- ※ 運用上アプリの更新時のコンテンツ変更に関して考える
 - rwdImageMapsなどでイメージマップのレスポンシブ化可能だが、ネイティブのJavaScriptでの表示制御を行うため、できるだけjQuery利用を避けたい。
 
+### 実現方法
 - 画面は最初にメニューした時、モーダル表示で実装する
 - CSS でボタン等のハイライト表示やアニメーション処理を行う。
-- pushState popState(Webブラウザの [前へ][次へ] ボタン）  https://www.ipentec.com/document/javascript-history-popstate
-- SpeechAPIを利用して音声案内を同時に展開できないか検討する。
 - 画面遷移については、あくまでページ内のコンテンツ内での仮想的な画面遷移のため、ページ自体の（SPA）画面遷移のようなヘッダー情報の書き換えや、ロードしたコンテンツに再度Loadイベント時の処理を付与する等の必要はない。
+- ~~SpeechAPIを利用して音声案内を同時に展開できないか検討する。~~
 
-
-### データの取得と作りこみでの実装
-
+### データの取得と作りこみで利用技術
 - Python
 - BeautifulSoup
 - json
 - requests
 
-#### JSONデータ
+## JSONデータ
 操作説明での画面遷移のための情報をJSONで管理し、このページではそのデータを取得してコンテンツを生成する。
 
-#### JSONデータの仕様
+### JSONデータの仕様
 
 
-##### JSONデータのサンプル
+### JSONデータのサンプル
 
 ```
 {
@@ -260,11 +232,11 @@ coords：412 110 752 228
 ```
 
 
-#### JSONデータの作成
+### JSONデータの作成
 
 [指定席券売機ご利用案内](https://www.jreast.co.jp/mv-guide/demo/)  
 
-##### 1. 上記サイトより以下をjupyter-notebookにて実行し利用し取得する。
+#### 上記サイトより以下をjupyter-notebookにて実行し利用し取得する。
 リンクとなるボタンはダミーとして１つだけ設定
 
 
@@ -357,16 +329,27 @@ python3 text.py > a.json
           }
         ]
       },
-      ・・・・・・
+      ・・・・・・以下省略
       t
 
 ```
+### スクレイピングで得た情報をJSONに加工する
 
-##### 2. 画像データダウンロード
+各画像からcoordsの値を割り出し、それぞれbutton情報をJSONファイルに追加する。
 
-##### 「Firefoxのページの情報」より一括でダウンロード
+例：抜粋
+```
+          "buttons": [
+            {
+              "shape": "rect",
+              "screenTransitionDestination": "screen02",
+              "coords": [660, 177, 1204, 365]
+            }
+```
 
-##### pythonよりスクレイピングダウンロード
+## 画像データ
+
+### pythonよりスクレイピングダウンロード
 
  jupyter-notebookで以下を実行するか、またはスクリプトファイルをpythonで実行する。
 
@@ -429,110 +412,49 @@ download/timetable_slide06.png
 download/timetable_slide0702.png
 download/timetable_slide14.png
 download/timetable_slide15.png
-download/timetable_slide16.png
-download/timetable_slide17.png
-download/timetable_slide18.png
-download/timetable_slide09.png
-download/timetable_slide20.png
-download/timetable_slide21.png
-download/timetable_slide22.png
-download/timetable_slide23.png
-download/timetable_slide24.png
-download/shinkansen_slide01.png
-download/shinkansen_slide02.png
-download/shinkansen_slide03.png
-download/shinkansen_slide04.png
-download/shinkansen_slide05.png
-download/shinkansen_slide06.png
-download/shinkansen_slide07.png
-download/shinkansen_slide08.png
-download/shinkansen_slide09.png
-download/shinkansen_slide10.png
-download/shinkansen_slide11.png
-download/shinkansen_slide12.png
-download/shinkansen_slide13.png
-download/shinkansen_slide14.png
-download/shinkansen_slide15.png
-download/shinkansen_slide16.png
-download/shinkansen_slide17.png
-download/shinkansen_slide18.png
-download/shinkansen_slide19.png
-download/shinkansen_slide20.png
-download/shinkansen_slide21.png
-download/shinkansen_slide22.png
-download/shinkansen_slide23.png
-download/suica_slide01.png
-download/suica_slide02.png
-download/suica_slide03.png
-download/suica_slide04.png
-download/suica_slide05.png
-download/suica_slide06.png
-download/suica_slide07.png
-download/suica_slide08.png
-download/suica_slide09.png
-download/suica_slide10.png
-download/suica_slide11.png
-download/suica_slide12.png
-download/suica_slide13.png
-download/suica_slide14.png
-download/suica_slide15.png
-download/suica_slide16.png
-download/suica_slide17.png
-download/net_slide01.png
-download/net_slide02.png
-download/net_slide03.png
-download/net_slide04.png
-download/net_slide05.png
-download/net_slide06.png
+・・・・・　省略　・・・・・
 download/net_slide07.png
 download/ico_pagetop.svg
 ```
 
-##### 3. スクレイピングで得た情報をJSONに加工する
-
-各画像からcoordsの値を割り出し、それぞれbutton情報をJSONファイルに追加する。
-
-例：抜粋
-```
-          "buttons": [
-            {
-              "shape": "rect",
-              "screenTransitionDestination": "screen02",
-              "coords": [660, 177, 1204, 365]
-            }
-```
-
 
 ## 制作時間
-|   |   | 
+
+| 項目 | 時間 | 
 |---|---| 
 | 構想と仕様決定 | 4時間 |
 | 調査 | 8時間 |
-| データ取得用コーディング | 4時間 |
-| 画像加工と座標取得 | 4時間 |
-| コーディング（説明画面） | 8時間 |
-| コーディング（既存レイアウトの模倣） | 4時間 |
+| デザインカンプ | 2時間 |
+| データ取得用コーディング | 15分 |
+| データ取得後のJOSN加工 | 3時間 |
+| 画像加工 | 3時間 |
+| コーディング | 12時間 |
+| コーディング（既存レイアウトの模倣） | -時間 |
+| 確認用AWS環境構築とデプロイ作業| 30分|</p>
 
 ## 実装で苦しんだところ
+
 ### 『画面遷移時に取得する画像データの扱い方』の実装に苦労した。
+70枚の画像全ての元画像の中に、押下するべきボタンの周りに色枠が描きこんであり、それらを消す作業に時間がかかった。また、押下するボタンの座標時間もそれなりの作業時間が必要となった。
 
 ### 非同期通信での取得したデータの扱いです。
+XMLHttpRequest、Fetchのとちらにしろ、非同期通信の場合には、「その取得データ取得と取得後の表示を（DOMに）反映するまでの一連の処理は同じタイミング（コールバックも含めて、同じ処理スコープ内）で全てお行わないとトラブルになる。」ということの体得に苦労しました。  
+他のタイミングで利用する場合は、Web Storate APIを利用するなどでシリアライズするか、一旦DOMに反映してそれを利用するかのような回避策もあることも分かりました。  
 
-  - FetchでもXMLHTTPrequestでも、取得したデータはその非同期通信処理内でのスコープのみ有効で、グローバル変数やインスタンス内への格納保持も不可であった。
-    https://teratail.com/questions/286024
-  - 故に、非同期通信の処理内でそのデータを利用しDOM生成行う方法が一番やりやすい。  けれども、イベント全体に必要なデータ量が少ない場合は、最初に１回全てダウンロードした方が効率的でなので、毎回そのイベント（今回であれば画面遷移）毎にデータを取得することになるので無駄である。(一括で必要なデータを取得しても、画像だけはパス情報しか持っておらず、毎回DOMの表示切り替え時にダウンロードするので、それに合わせてという考えもあるが・・・)
-  - 場合によっては全てのデータを一旦DOM生成し、表示する要素以外はdisplay:noneにするような仕組みをとる方が良いかもしれない。
-  - どうしても取得したデータをsessson Storage に、シリアライズ化（オブジェクトなどを文字列化）し一時保存して、他の場所で再びでシリアライズする。
-
-今回は、JSONデータを一括取得して画像データだけ都度サーバより取得するような感じで実装しました。
+今回は、JSONデータを一括取得して画像データだけ都度サーバより取得するような感じで実装しました。  
 本来は非同期通信でWebAPI経由でJSONを取得して、必要な分を得た方がスマートだと思います。
 ですが、一括で必要なリソースを取得してDOM生成し（DOM生成時に全ての画像をダウンロードする？）、必要な要素以外を非表示とする手法も捨て難いです。
 
-### 親要素
+### プロトタイプベースのオブジェクト指向
+JavaScriptはプロトタイプベースのオブジェクト指向プログラミング言語です。
+去に学んだ、オブジェクト指向プログラミングはそのほとんどは、クラスベースオブジェクト指向言語であったため、コーディングすればするほど混乱を招いた。  
+コンストラクタはインスタンス変数が使えてしまうように見えるし、メソッドのオーバーロードは行えないなど、非常に考え方に苦労しました。  
+結局９割以上コーディングを終えた時点でJavaScriptでのClassはシンタックスシュガー（糖衣構文）であることが分かり、クラス自体は存在しないことがわかった（結局はオブジェクト（連想配列とプロトタイプ））
 
-### クラスベースのオブジェクト指向に対応していないJavaScript
-JavaScriptはプロトタイプベースのオブジェクト指向プログラミング
+### this
+従来の関数とアロー関数内、クラスメソッドのthisはそれぞれ違うということに気付くのに2日かかりました。
 
+### 
 ## 課題作成理由
 これらの表現は、プレゼンテーションアプリなどでも、ハイパーリンクで画面遷移を表現することは可能ですが、ブラウザの描画速度の利便性は高いと思います。
 
@@ -548,25 +470,5 @@ JavaScriptはプロトタイプベースのオブジェクト指向プログラ�
 また、操作しているときに実機では表示しない情報などを画面欄外に表示することで、付加情報を与えることが可能です。
 
 ## 今後
-応用として以下のようなサイトの改善などに利用可能と思われる。
-        
-
-#### 応用用途
-
-- [西武鉄道:券売機・チャージ機の操作方法](https://www.seiburailway.jp/ticket/multifunction-ticket-vending-machine/index.html)  
-- [えきネット:指定席券売機での操作方法](https://www.eki-net.com/travel/guide/payment/mv.html)
-- [SoftBank Robots:Pepperでアプリを利用するために](https://doc.robot.softbank.jp/pepper_biz_3/manual/index/topics_detail171/id=1629)
-- [USEN:UレジFOODの取扱説明書](https://support.usen.com/usr/file/attachment/MxZLFRAWVM12gB5h.pdf)
-- [e-net:ATMご利用手順](https://www.enetcom.co.jp/process/newatm/)
-- [東芝テック:飲食 POS システム消費税増税対応変更手順マニュアル](https://www.toshibatec.co.jp/products/ctax/pdf/FScompass_keigen.pdf)
-- [JR東日本:多機能券売機でのSuica定期券の購入方法](https://www.jreast.co.jp/em-guide/)
-- [JR東日本:Apple PayのSuicaをはじめる](https://www.jreast.co.jp/appsuica/start/)
-
-#### 画面遷移情報を作るページの制作
-今後の説明対象の機器のソフトウェア更新などにより、コンテンツ内容の修正が生じた時、JSONファイルの修正が必要となるが、これらもユーザ側で簡単に作れるようにする必要がいずれ（要望が）生じる可能性がある。    
-[このようなサービス](https://front-end.ai/)のように、画像を放り込むと各オブジェクトをAIで自動認識で生成し、その後そのオブジェクトに対して編集しJSONデータを生成することが理想だが、まずは画像を取り込んでJSONデータに必要な値を入力するところから実装してみたい。  
-ある程度形になったら、一つのサービスとして成り立つと考えてます。  
-
-#### Portalsの検討
-
-新仕様に追加される可能性のある portal 要素でのプロトタイプを作ってみることを検討する
+JOSNデータを製作中に思ったのですが、画面遷移情報を作成するアプリを作れば、他のページに簡単に流用できるので、社内などで操作マニュアル作成にそのまま使えることが可能と思います。
+時間があればこれらの制作にあたり、一つのサービスとして提供することも考えています。        
