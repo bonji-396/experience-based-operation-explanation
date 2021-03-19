@@ -62,7 +62,7 @@
 | --- | --- |
 | 新規or改修 | 既存ページの改修 |
 | 新規の場合、サーバー・ドメインをどうするか | 既存への修正にてなし |
-| 改修の場合はサーバーのFTP情報の確認 | 修正作業は顧客で実施するので、試験・確認用環境とリソースの提供のみ。[確認用環境](http://mikuro.works/portfolio/works/experience-based-operation-explanation/index.html) |
+| 改修の場合はサーバーのFTP情報の確認 | 修正作業は顧客で実施するので、試験・確認用環境とリソースの提供のみ。[確認用環境](https://www.mikuro.works/portfolio/works/experience-based-operation-explanation/) |
 | 埋め込むSNSの有無 | なし |
 | お問い合わせフォームの必要性 | なし |
 | 作業のタイムスケジュール | 1. 技術調査<br>2. 2/18 カンプ提出・制作開始<br>3. 2/25 テスト<br>4. 3/22 提出・顧客による受け入れテスト<br>5. 3/19 公表 |
