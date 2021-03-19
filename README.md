@@ -95,7 +95,7 @@
 
 ### 各ページのワイヤーフレーム
 
-![ワイヤーフレーム](img/wireframe.png)
+![ワイヤーフレーム](img/wireframe.png "ワイヤーフレーム" width=30%)
 
 ## コンテンツ幅
 
@@ -124,7 +124,7 @@
     - 「方法３」： 一つの画面要素で構成し、一つ上のレイヤー（position: absolute、z-index）にarea座標を指定したオブジェクトをおき、クリックイベントで画面の各値を変更する。
     - 「方法４」：一度全ての画面要素をHTML化し、カレントの画面以外はdisplay none (visibility: hidden)で対応。
     一つ上のレイヤー（position: absolute、z-index）にarea座標を指定したオブジェクトをおき、クリックイベントでした時に、displayプロパティまたは、 visibilityプロパティを切り替える。
-- 画面表示領域の要素に、それぞれgroupIndex（利用方法別）、画像にpictureIndex（画面の識別）ID値をに付与する。
+- 画面表示領域の要素に、それぞれtitleID（購入方法別）、画像にscreenID（画面の識別）ID値をに付与し管理する。
 - 各スクリーンにはボタンがいくつか存在し、そのボタンの位置を元画面画像のサイズに合わせた座標をcoords値として設定する。 
 
 
@@ -234,7 +234,7 @@
 
 ### JSONデータの作成
 
-[指定席券売機ご利用案内](https://www.jreast.co.jp/mv-guide/demo/)  
+[指定席券売機ご利用案内](https://www.jreast.co.jp/mv-guide/demo)  
 
 #### 上記サイトより以下をjupyter-notebookにて実行し利用し取得する。
 リンクとなるボタンはダミーとして１つだけ設定
