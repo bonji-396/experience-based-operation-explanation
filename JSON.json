@@ -1991,19 +1991,13 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen07",
-              "coords": [627, 494, 741, 537]
+              "coords": [652, 494, 769, 537]
             },
             {
               "name" : "cancel",
               "shape": "circle",
               "destination": "screen01",
               "coords": [67, 957, 58]
-            },
-            {
-              "name": "previous",
-              "shape": "rect",
-              "destination": "screen05",
-              "coords": [158, 941, 325, 1011]
             }
           ]
         },
