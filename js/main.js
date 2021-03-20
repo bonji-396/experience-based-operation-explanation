@@ -1,6 +1,7 @@
 /* 
  TODO: closeや、view、redrawのタイミングで状態情報の整合性を図る 3/20
-
+ TODO: 説明画像の像縦でのレスポンシブ化
+ TODo: 
  TODO: リファクタリング            3/21
  TODO: ポートフォリオ用ページ       3/21
  TODO: ポートフォリオ用にgithub README.md specification.mdを追加　 3/21
