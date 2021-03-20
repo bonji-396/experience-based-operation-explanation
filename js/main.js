@@ -1,14 +1,13 @@
 /* 
- TODO: JR 共通部のレイアウト＆CSS   3/19
- TODO: スマートフォン対応（CSS）    3/19
+ TODO: closeや、view、redrawのタイミングで状態情報の整合性を図る 3/20
 
- TODO: リファクタリング            3/20
- TODO: ポートフォリオ用ページ       3/20
- TODO: ポートフォリオ用にgithub README.md specification.mdを追加　 3/20
- TODO: closeや、view、redrawのタイミングで状態情報の整合性を図る 3/18
- TODO: コメントを削除             3/20
- TODO: mikuro.worksに実装        3/20
- TODO: github公開                3/20　
+ TODO: リファクタリング            3/21
+ TODO: ポートフォリオ用ページ       3/21
+ TODO: ポートフォリオ用にgithub README.md specification.mdを追加　 3/21
+ TODO: コメントを削除             3/21
+ TODO: mikuro.worksに実装        3/21
+ TODO: github公開                3/21
+ AWS: Basic認証
  */
 /* ----------------------------------------------------------------------------
  定数の定義
@@ -83,7 +82,7 @@ class Controller {
     this.selectAPurchaseMethodView.view(this.dataRetain.downloadData);
     // URLにハッシュ値がある場合、そのハッシュに該当する操作説明を表示する
     if (this.currentTitleID) {
-      this.displayOperationExplanationView();
+      this.displayOperationExplanationView();           // 操作説明を表示 
     }
     // ハッシュ値が変更された時の処理
     this.defineHashchangeEvent();
@@ -103,6 +102,8 @@ class Controller {
     this.defineCloseButtonEvents();
     // Window表示サイズが変化した時の処理
     window.addEventListener('resize', this.defineResizeEvents);
+    // 購入方法選択画面のボタンのポインターイベントを無効
+    this.selectAPurchaseMethodView.ankerEventsNone();
   }
   /* 作説明画面用の表示データを取り出す
   ------------------------------------------------------ */
@@ -265,9 +266,7 @@ class SelectAPurchaseMethodViewController extends ViewController {
       const div =  document.createElement('div');
       div.className = 'btn';
       const a = document.createElement('a');
-      if(purchaseType.title.length > 14) {
-        a.className = 'twoline';
-      }
+
       a.innerHTML = purchaseType.title;
       a.href = '#' + purchaseType.titleID;
   
@@ -283,8 +282,10 @@ class SelectAPurchaseMethodViewController extends ViewController {
   ------------------------------------------------------ */
   ankerEventsNone() {
     const ankers = this.element.querySelectorAll('a');
+    console.log('anker:::', ankers);
     for (let anker of ankers) {
       anker.style.pointerEvents = 'none';
+      console.log('anker p', anker.style.pointerEvents);
     }
   }
   /* .select-a-purchase-method内の
@@ -323,7 +324,6 @@ class OperationExplanationViewController extends ViewController {
     this.setElement(this.createSupplementaryExplanation(screen));
     // モーダルウィンドウとして表示する
     this.element.classList.add('show');
-    document.body.classList.add('bg');
     // （画像を表示して幅高さを取得できるので）画像内のボタンを表示する。
     const image = document.getElementById('screen-image');
     // console.log(document.getElementById('operation-explanation-box').clientWidth); 
@@ -500,6 +500,5 @@ class OperationExplanationViewController extends ViewController {
   close(){
     this.deleteElements();
     this.element.classList.remove('show');
-    document.body.classList.remove('bg');
   }
 }
