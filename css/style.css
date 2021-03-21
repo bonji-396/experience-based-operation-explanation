@@ -25,7 +25,7 @@ html, body, h1, h2, h3, ul, li, dl, dt, dd, p, span  {
   line-height: 1;
 }
 img {
-  vertical-align: bottom;
+  vertical-align: top;
   max-width: 100%;
   height: auto;
 }
@@ -144,8 +144,6 @@ header {
   height: 38px;
   align-items: center;
 }
-.navi01_link li {
-}
 .navi01_link li a {
   height: 12px;
   color: #fff;
@@ -191,7 +189,6 @@ header {
   left: 0;
   bottom: 12px;
   margin: auto;
-  vertical-align: baseline;
 }
 #navi_train .nav a:before {
   background: url(../img/ico_header_train.svg) no-repeat;
@@ -303,8 +300,8 @@ main>.wapper {
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%, -50%);
   max-width: 832px;
-  width: 95vw;
-  height: 95vh;
+  width: 90vw;
+  height: 90vh;
   padding: 16px;
   border-radius: 24px;
   box-shadow: 0 0 0 10000px rgba(0, 0, 0, 0.5);
@@ -378,21 +375,17 @@ h3 {
 ------------------- */
 #operation-explanation-box {
   max-width: 800px;
-  height: calc((95vw - 220px) * var(--aspectRatio)); /* 縦横比率を保つ：イメージを格納するBOXの幅を基準とした比率 */
+  height: calc((95vh - 220px) * var(--aspectRatio)); /* 縦横比率を保つ：イメージを格納するBOXの幅を基準とした比率 */
   max-height: 640px;
   margin: 0 auto 10px;
   position: relative;
   align-items: center;
   text-align: center;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
 }
 #operation-explanation-box>img {
-  /* display: block; */
-  /* max-width: 100%;
-  height: 100%; */
-  /* margin: 0 auto; */
+  /* height: 100%; !!!!!!!!!!!!!!*/ 
+  width: 100%;
+  object-fit: scale-down;
 }
 .screen-button {
   width: 0;
@@ -460,6 +453,10 @@ h3 {
 .screen-button:hover[data-name="cancel"]{
   box-shadow: 0 0 4px 10px var(--cancel-button-hover-color);
 }
+.screen-button:active{
+  background-color: rgb(255, 0, 0, 0.2);
+  /* opacity: 0.5; */
+}
 @keyframes flash { 
   0%, 100% {
     opacity: 0;
@@ -516,10 +513,6 @@ footer p {
     padding: 5px 10px;
     align-self: center;
     text-align: center;
-  }
-  #lang>.btn:before,
-  #search>.btn:before {
-    /* margin-right: 0; */
   }
   #lang>.btn>span,
   #search>.btn>span {
@@ -621,7 +614,7 @@ footer p {
     display: block;
     width: 55px;
   }
-  img {
+  .spBtn>img {
     vertical-align: middle;
     line-height: 0;
     border: 0;
@@ -629,16 +622,12 @@ footer p {
   .header_navi02 {
     display: none;
   }
-
-
-
   /* main
   -------------------------------------------------------- */
   h1{
     font-size: 28px;
     padding-bottom: 20px;
   }
-
   #breadcrumb {
     display: none;    
   }
@@ -647,7 +636,6 @@ footer p {
     row-gap: 10px;
     padding: 20px;
   }
-
 }
 /*
 ---------------------------------------------------------------------------- */
