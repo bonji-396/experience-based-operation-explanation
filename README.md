@@ -103,19 +103,6 @@
 
 ![ワイヤーフレーム](img/wireframe.png "ワイヤーフレーム")
 
-## コンテンツ幅
-
-<dl>
-  <dt>コンテンツ最大幅</dt>
-  <dd>.container { max-width: 1024px; }</dd>
-  <dt>パソコン用</dt>
-  <dd>@media screen and (max-width: 1024px) { }</dd>
-  <dt>スマートフォン横又はタブレット</dt>
-  <dd>@media screen and (max-width: 896px) { }</dd>
-  <dt>スマートフォ縦</dt>
-  <dd>@media screen and (max-width: 480px) { }</dd>
-</dl>
-
 ## （要件を満たすための）実現方法と調査
 
 ### JSON - 画面遷移の制御やメンテンスのため、画面コンテンツデータに関して
@@ -147,7 +134,6 @@
 ### ボタンのホバー時の処理   
 従来のイメージマップの場合、areaの枠を消すCSSは適用できるがその他は不可だった。  
 よって上記「方法１」、「方法２」の実装は断念
-
 
 ## 実装
 
@@ -422,7 +408,13 @@ download/timetable_slide15.png
 download/net_slide07.png
 download/ico_pagetop.svg
 ```
+## 実装 環境構築
+- AWS S3 : 静的コンテンツをサーバレスで提供
+- AWS CloudFront : CDNとしてキャッシング
+- AWS Route 53 : ドメインへのマッピングと、CloudFront経由でS3へのルーティング
+- AWS Lambda : サーバレスにてBasic認証等の実装
 
+![aws-3s-static](https://user-images.githubusercontent.com/71716610/111933603-24977300-8b03-11eb-917c-5e55d113df4b.png)
 
 ## 制作時間
 
