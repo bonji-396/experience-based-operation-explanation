@@ -10,7 +10,7 @@
 
 
 ### 変更前
-![befor](https://user-images.githubusercontent.com/71716610/111925617-fe66d880-8aec-11eb-9faf-bcc17bc3c64f.gif)→![output](https://user-images.githubusercontent.com/71716610/111876207-076a8380-89e1-11eb-8474-3b227e2b1e7d.gif)
+![befor](https://user-images.githubusercontent.com/71716610/111925617-fe66d880-8aec-11eb-9faf-bcc17bc3c64f.gif | width=200)
 
 ### 変更後（クライアントワーク）
 ![output](https://user-images.githubusercontent.com/71716610/111876207-076a8380-89e1-11eb-8474-3b227e2b1e7d.gif)
