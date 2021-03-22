@@ -424,20 +424,26 @@ class OperationExplanationViewController extends ViewController {
     const image = document.getElementById('screen-image');
     console.log(`ow:${image.naturalWidth}, oh:${image.naturalHeight}, ${image.width}x${image.height}`);
 
-    this.imagewidth = image.width;
+    let correctionLeftValue = 0;
+    if(image.height < 640) { // 縦幅は短くなった場合に合わせてimage.widthの値は短くならないので対応
+      this.imagewidth  = image.height / 640 * image.width;
+      correctionLeftValue = (image.width - this.imagewidth) / 2;　// 画像が中央位置にズレるため補正　TODO: イメージを背景にして幅高さを指定する方向で大幅に修正すべき
+    } else {
+      this.imagewidth = image.width;
+    }
     this.imageHeight = image.height;
-    let widthRatio = image.width / image.naturalWidth;
-    let heightRatio = image.height / image.naturalHeight;
-
+    const widthRatio = this.imagewidth / image.naturalWidth;
+    const heightRatio = this.imageHeight / image.naturalHeight;
+ 
     // 画像内のボタンをそれぞれ生成し追加
     screen.buttons.forEach((buttonData)=>{
-      box.appendChild(this.createScreenButtons(buttonData, widthRatio, heightRatio));
+      box.appendChild(this.createScreenButtons(buttonData, widthRatio, heightRatio, correctionLeftValue));
     }); 
   }
   /*
    画面遷移ボタンの生成
   ------------------------------------------------------ */
-  createScreenButtons(buttonData, widthRatio, heightRatio){
+  createScreenButtons(buttonData, widthRatio, heightRatio, correctionLeftValue){
     const button = document.createElement('div');
     button.className = 'screen-button';
     // button.setAttribute('data-destination', buttonData.destination);
@@ -449,15 +455,15 @@ class OperationExplanationViewController extends ViewController {
       case 'rect':
         console.log('rect');
         button.style.top = (buttonData.coords[1] * widthRatio) + 'px';
-        button.style.left = (buttonData.coords[0] * heightRatio) + 'px';
-        button.style.width = (Math.abs(buttonData.coords[2] - buttonData.coords[0]) * widthRatio) + 'px';
+        button.style.left = correctionLeftValue + (buttonData.coords[0] * heightRatio) + 'px';// 補正
+        button.style.width = (Math.abs(buttonData.coords[2] - buttonData.coords[0]) * widthRatio) + 'px'; 
         button.style.height = (Math.abs(buttonData.coords[3] - buttonData.coords[1]) * heightRatio) + 'px';
         button.style.borderRadius = (Math.abs(buttonData.coords[3] - buttonData.coords[1]) / 32)  + 'px'
         break;
       case 'circle':
         console.log('circle');
         button.style.top = ((buttonData.coords[1] - buttonData.coords[2]) * widthRatio) + 'px';
-        button.style.left = ((buttonData.coords[0] - buttonData.coords[2]) * heightRatio) + 'px';
+        button.style.left =　correctionLeftValue + ((buttonData.coords[0] - buttonData.coords[2]) * heightRatio) + 'px';
         button.style.width = (buttonData.coords[2] * 2 * widthRatio) + 'px';
         button.style.height = (buttonData.coords[2] * 2 * heightRatio) + 'px';
         button.style.borderRadius = '50%';
