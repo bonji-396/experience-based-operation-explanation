@@ -414,7 +414,7 @@ download/ico_pagetop.svg
 - AWS Route 53 : ドメインへのマッピングと、CloudFront経由でS3へのルーティング
 - AWS Lambda : サーバレスにてBasic認証等の実装
 
-![aws-3s-static](https://user-images.githubusercontent.com/71716610/111933603-24977300-8b03-11eb-917c-5e55d113df4b.png | width=200)
+![aws-3s-static](https://user-images.githubusercontent.com/71716610/111933603-24977300-8b03-11eb-917c-5e55d113df4b.png)
 
 ## 制作時間
 
