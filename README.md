@@ -10,7 +10,7 @@
 
 
 ### 変更前
-![befor](https://user-images.githubusercontent.com/71716610/111925617-fe66d880-8aec-11eb-9faf-bcc17bc3c64f.gif | width=200)
+![befor](https://user-images.githubusercontent.com/71716610/111925617-fe66d880-8aec-11eb-9faf-bcc17bc3c64f.gif)
 
 ### 変更後（クライアントワーク）
 ![output](https://user-images.githubusercontent.com/71716610/111876207-076a8380-89e1-11eb-8474-3b227e2b1e7d.gif)
@@ -414,7 +414,7 @@ download/ico_pagetop.svg
 - AWS Route 53 : ドメインへのマッピングと、CloudFront経由でS3へのルーティング
 - AWS Lambda : サーバレスにてBasic認証等の実装
 
-![aws-3s-static](https://user-images.githubusercontent.com/71716610/111933603-24977300-8b03-11eb-917c-5e55d113df4b.png)
+![aws-3s-static](https://user-images.githubusercontent.com/71716610/111933603-24977300-8b03-11eb-917c-5e55d113df4b.png | width=200)
 
 ## 制作時間
 
