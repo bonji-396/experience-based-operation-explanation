@@ -8,6 +8,11 @@
 
 - 機器メーカのHPに掲載する、対象機器の操作説明ページ [指定席券売機ご利用案内](https://www.jreast.co.jp/mv-guide/demo/)  の新案ページとして、指定席券売機の操作説明を（モックアップ型）体験型で行うページに改変してほしい。
 
+
+### 変更前
+![befor](https://user-images.githubusercontent.com/71716610/111925617-fe66d880-8aec-11eb-9faf-bcc17bc3c64f.gif)
+
+### 変更後（クライアントワーク）
 ![output](https://user-images.githubusercontent.com/71716610/111876207-076a8380-89e1-11eb-8474-3b227e2b1e7d.gif)
 
 ## ヒアリング
@@ -98,19 +103,6 @@
 
 ![ワイヤーフレーム](img/wireframe.png "ワイヤーフレーム")
 
-## コンテンツ幅
-
-<dl>
-  <dt>コンテンツ最大幅</dt>
-  <dd>.container { max-width: 1024px; }</dd>
-  <dt>パソコン用</dt>
-  <dd>@media screen and (max-width: 1024px) { }</dd>
-  <dt>スマートフォン横又はタブレット</dt>
-  <dd>@media screen and (max-width: 896px) { }</dd>
-  <dt>スマートフォ縦</dt>
-  <dd>@media screen and (max-width: 480px) { }</dd>
-</dl>
-
 ## （要件を満たすための）実現方法と調査
 
 ### JSON - 画面遷移の制御やメンテンスのため、画面コンテンツデータに関して
@@ -142,7 +134,6 @@
 ### ボタンのホバー時の処理   
 従来のイメージマップの場合、areaの枠を消すCSSは適用できるがその他は不可だった。  
 よって上記「方法１」、「方法２」の実装は断念
-
 
 ## 実装
 
@@ -417,21 +408,27 @@ download/timetable_slide15.png
 download/net_slide07.png
 download/ico_pagetop.svg
 ```
+## 実装 環境構築
+- AWS S3 : 静的コンテンツをサーバレスで提供
+- AWS CloudFront : CDNとしてキャッシング
+- AWS Route 53 : ドメインへのマッピングと、CloudFront経由でS3へのルーティング
+- AWS Lambda : サーバレスにてBasic認証等の実装
 
+![aws-3s-static](https://user-images.githubusercontent.com/71716610/111933603-24977300-8b03-11eb-917c-5e55d113df4b.png)
 
 ## 制作時間
 
 | 項目 | 時間 | 
 |---|---| 
-| total | 33時間 | 
+| total | 38時間 | 
 | 構想と仕様決定 | 4時間 |
 | 調査 | 8時間 |
 | デザインカンプ | 2時間 |
 | データ取得用コーディング | 20分(画像5分、情報＋JSON化15分) |
 | データ取得後のJOSN加工 | 3時間 |
 | 画像加工 | 3時間 |
-| コーディング | 12時間 |
-| コーディング（既存レイアウトの模倣） | -時間 |
+| コーディング | 13時間 |
+| コーディング（既存レイアウトの模倣） | 4時間 |
 | 確認用AWS環境構築とデプロイ作業| 30分|</p>
 
 ## 実装で苦しんだところ
