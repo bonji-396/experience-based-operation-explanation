@@ -54,7 +54,7 @@ header {
   background-color: var(--sub-color);
 }
 #kinkyuOshirase {
-  background-image: url(/img/bg_info_coronavirus202101.png);
+  background-image: url(../img/bg_info_coronavirus202101.png);
   padding: 5px 5px;
   position: relative;
 }
