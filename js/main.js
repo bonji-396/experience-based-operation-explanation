@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // コントローラの生成とページの表示
     const controller = new Controller(dataRetain);
     controller.view();
-    console.log(controller);
   });
 }, false);
 /* ----------------------------------------------------------------------------
@@ -120,7 +119,6 @@ class Controller {
   -------------------------------- */
   defineHashchangeEvent() {
     window.addEventListener('hashchange', (e)=>{
-      console.log('ハッシュ値変更！！！！！！')
       if(window.location.hash.slice(1)) {
         this.currentTitleID = window.location.hash.slice(1);
         this.currentScreenID = 'screen01';
@@ -134,7 +132,6 @@ class Controller {
     document.body.addEventListener('click', (event)=>{
       /* 画像内ボタンをクリックした時の動作を定義 */
       if (event.target.closest('.screen-button')) {
-        console.log('ボタンがクリックされたよ');
         // 遷移先の表示データを引き渡して操作説明表示部に再表示させる
         this.operationExplanationView.screenReDraw( //##########
           // 遷移先の表示データと、データセット（遷移先スクリーン名）を取得し引数とする
@@ -145,15 +142,13 @@ class Controller {
           )  
         );
         this.currentScreenID = event.target.closest('.screen-button').dataset.destination;
-        console.log('currentTitleD',this.currentTitleID);
-        console.log('currentScreenID',this.currentScreenID);
+
       /*  操作説明画面の表示部の外側をクリックした時 */
       } else if (document.getElementById('operation-explanation').classList.contains('show') &&
                 !event.target.closest('#operation-explanation')) {
         // 操作説明画面を閉じる
         this.closeOperationExplanationView();
         this.currentScreenID = 'screen01';
-        console.log('閉じた！！');
       }
     });
   }
@@ -169,9 +164,7 @@ class Controller {
   /* Window表示サイズが変化した時の処理
   ------------------------------------------------------ */
   defineResizeEvents = () => {
-      console.log('リサイズされます！！！！！！')
       // 画像サイズが変更された場合
-      console.log(this.operationExplanationView);
       if(this.operationExplanationView.checkScreenImageReSize()){
         // 画像ボタンの再描画　#########
         this.operationExplanationView.buttonsReDraw(
@@ -215,8 +208,6 @@ class ViewController {
     this.idName = idName;
     // このインスタンスの管理対象となる要素
     this.element = document.getElementById(idName);
-
-    console.log(this.constructor.name,'が生成されました。');
   }
   /* 引き渡された要素を、自身が受け持つ要素に追加する
   ------------------------------------------------------ */
@@ -258,7 +249,6 @@ class SelectAPurchaseMethodViewController extends ViewController {
   }
   /* .select-a-purchase-methodを表示（購入別ボタンを生成し表示する） */
   view(downloadData){
-    console.log(`${this.constructor.name}が#${this.idName}を表示します。`);
 
     const fragment = document.createDocumentFragment();
 
@@ -283,10 +273,8 @@ class SelectAPurchaseMethodViewController extends ViewController {
   ------------------------------------------------------ */
   ankerEventsNone() {
     const ankers = this.element.querySelectorAll('a');
-    console.log('anker:::', ankers);
     for (let anker of ankers) {
       anker.style.pointerEvents = 'none';
-      console.log('anker p', anker.style.pointerEvents);
     }
   }
   /* .select-a-purchase-method内の
@@ -327,11 +315,9 @@ class OperationExplanationViewController extends ViewController {
     this.element.classList.add('show');
     // （画像を表示して幅高さを取得できるので）画像内のボタンを表示する。
     const image = document.getElementById('screen-image');
-    // console.log(document.getElementById('operation-explanation-box').clientWidth); 
   }
   // スクリーン再描画
   screenReDraw(screen) {
-    console.log(screen, 'を表示しなおします。！！！！！！！') 
     document.getElementById('operation-explanation-description').remove();
     document.getElementById('operation-explanation-box').innerHTML = '';
     document.getElementById('operation-explanation-box').remove();
@@ -343,7 +329,6 @@ class OperationExplanationViewController extends ViewController {
   /* operation-explanation-hedding の生成
   ------------------------------------------------------ */
   createOperationExplanationHedding(purchaseType){
-    console.log(purchaseType);
     const opeExpHedding = document.createElement('div');
     opeExpHedding.id = 'operation-explanation-hedding';
 
@@ -368,7 +353,6 @@ class OperationExplanationViewController extends ViewController {
     opeExpDescription.appendChild(h3);
 
     const p = document.createElement('p');
-    console.log('lengh', screen.description.length); ///////// 文字列の長さを取得
     p.innerText = screen.description;
     opeExpDescription.appendChild(p);
 
@@ -410,7 +394,6 @@ class OperationExplanationViewController extends ViewController {
   /* （操作説明の表示を）閉じるボタンの要素の生成
   ------------------------------------------------------ */
   createCloseButton() {
-    console.log('create close button');
     const closeBtn = document.createElement('div');
     closeBtn.id = 'close';
     closeBtn.textContent = '✖️';
@@ -422,12 +405,12 @@ class OperationExplanationViewController extends ViewController {
   setScreenButton(screen){
     const box = document.getElementById('operation-explanation-box');
     const image = document.getElementById('screen-image');
-    console.log(`ow:${image.naturalWidth}, oh:${image.naturalHeight}, ${image.width}x${image.height}`);
 
     let correctionLeftValue = 0;
     if(image.height < 640) { // 縦幅は短くなった場合に合わせてimage.widthの値は短くならないので対応
-      this.imagewidth  = image.height / 640 * image.width;
-      correctionLeftValue = (image.width - this.imagewidth) / 2;　// 画像が中央位置にズレるため補正　TODO: イメージを背景にして幅高さを指定する方向で大幅に修正すべき
+      this.imagewidth  = image.height / 640 * 800;
+      correctionLeftValue = (image.width - this.imagewidth) / 2;　// 画像が中央位置にズレるため補正
+      //　TODO: イメージを背景にして幅高さを指定する方向で大幅に修正すべき !!!!!!!!!!!!!!!!x
     } else {
       this.imagewidth = image.width;
     }
@@ -453,7 +436,6 @@ class OperationExplanationViewController extends ViewController {
     // 四角形（rectタグ）; 円（circleタグ）; 楕円（ellipseタグ）; 直線（lineタグ）; 折れ線（polylineタグ）; 多角形（polygonタグ）; パス（pathタグ）; 画像（imageタグ）; 文字列（textタグ）
     switch (buttonData.shape) {
       case 'rect':
-        console.log('rect');
         button.style.top = (buttonData.coords[1] * widthRatio) + 'px';
         button.style.left = correctionLeftValue + (buttonData.coords[0] * heightRatio) + 'px';// 補正
         button.style.width = (Math.abs(buttonData.coords[2] - buttonData.coords[0]) * widthRatio) + 'px'; 
@@ -461,7 +443,6 @@ class OperationExplanationViewController extends ViewController {
         button.style.borderRadius = (Math.abs(buttonData.coords[3] - buttonData.coords[1]) / 32)  + 'px'
         break;
       case 'circle':
-        console.log('circle');
         button.style.top = ((buttonData.coords[1] - buttonData.coords[2]) * widthRatio) + 'px';
         button.style.left =　correctionLeftValue + ((buttonData.coords[0] - buttonData.coords[2]) * heightRatio) + 'px';
         button.style.width = (buttonData.coords[2] * 2 * widthRatio) + 'px';
@@ -469,7 +450,7 @@ class OperationExplanationViewController extends ViewController {
         button.style.borderRadius = '50%';
         break;
       default:
-        console.log(buttonData.shape);
+        ;
     }
     return button;
   }
@@ -480,14 +461,12 @@ class OperationExplanationViewController extends ViewController {
     const buttons = document.getElementsByClassName('screen-button');
     /// 全てのbuttonをboxから削除
     for (let button of buttons) {
-      console.log(button,'を削除します。');
       box.removeChild(button);
     }
   }
   /* 画像内ボタンの再描画 
   ------------------------------------------------------ */
   buttonsReDraw(screen){
-    console.log('buttonを表示しなおします。！！！！！！！')
     this.removeScreenButtons();
     this.setScreenButton(screen);
   }
