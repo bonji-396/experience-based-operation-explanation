@@ -373,7 +373,8 @@ h3 {
 ------------------- */
 #operation-explanation-box {
   max-width: 800px;
-  height: calc((95vh - 220px) * var(--aspectRatio)); /* 縦横比率を保つ：イメージを格納するBOXの幅を基準とした比率 */
+  /* 縦横比率を保つ：イメージを格納するBOXの幅を基準とした比率 */
+  height: calc((90vh - 220px) * var(--aspectRatio));
   max-height: 640px;
   margin: 0 auto 10px;
   position: relative;
@@ -552,8 +553,6 @@ footer p {
   #jre_header_in .header_navi02_list > li:not(:last-child) {
     padding-right: 16px;
   }
-  /* main
-  -------------------------------------------------------- */
 }
 /*
 ---------------------------------------------------------------------------- */
@@ -637,7 +636,7 @@ footer p {
 }
 /*
 ---------------------------------------------------------------------------- */
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 550px) {
   /* header
   -------------------------------------------------------- */
   header {

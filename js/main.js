@@ -1,14 +1,5 @@
 /* 
- TODO: closeや、view、redrawのタイミングで状態情報の整合性を図る 3/20
- TODO: 説明画像の像縦でのレスポンシブ化
- TODo: 
- TODO: リファクタリング            3/21
- TODO: ポートフォリオ用ページ       3/21
- TODO: ポートフォリオ用にgithub README.md specification.mdを追加　 3/21
- TODO: コメントを削除             3/21
- TODO: mikuro.worksに実装        3/21
- TODO: github公開                3/21
- AWS: Basic認証
+ TODO: AWS: Basic認証
  */
 /* ----------------------------------------------------------------------------
  定数の定義
@@ -293,10 +284,8 @@ class SelectAPurchaseMethodViewController extends ViewController {
 class OperationExplanationViewController extends ViewController {
   constructor(idName = 'operation-explanation' ) {
     super(idName);
-    this.imagewidth = 0; // リサイズチェック用のリサイズ前の幅を格納
-    this.imageHeight = 0;// リサイズチェック用のリサイズ前の高さを格納 
-    this.imageNaturalWidth = 0;
-    this.imageNaturalHeight = 0;
+    this.imgElemWidth = 0; // リサイズチェック用のリサイズ前の幅を格納
+    this.imgElemHeight = 0;// リサイズチェック用のリサイズ前の高さを格納 
   }
   /* 自身が受け持つ要素(#operation-explanation)を表示する
   ------------------------------------------------------ */
@@ -405,28 +394,51 @@ class OperationExplanationViewController extends ViewController {
   setScreenButton(screen){
     const box = document.getElementById('operation-explanation-box');
     const image = document.getElementById('screen-image');
+    console.log('ow:', image.naturalWidth, 'oh:', image.naturalHeight, 'dw:', image.width, 'dh:', image.height);
 
-    let correctionLeftValue = 0;
-    if(image.height < 640) { // 縦幅は短くなった場合に合わせてimage.widthの値は短くならないので対応
-      this.imagewidth  = image.height / 640 * 800;
-      correctionLeftValue = (image.width - this.imagewidth) / 2;　// 画像が中央位置にズレるため補正
-      //　TODO: イメージを背景にして幅高さを指定する方向で大幅に修正すべき !!!!!!!!!!!!!!!!x
+    const regularRatio = image.naturalHeight / image.naturalWidth;
+    const imgEelementRatio = image.height / image.width;
+    console.log('rr:', regularRatio, 'iee:',imgEelementRatio);
+
+    let scaleRatio = 0;
+    let leftPositionCorrectionValue = 0;
+    let topPositionCorrectionValue = 0;
+    if (imgEelementRatio > regularRatio) {
+      // 実際表示されている画像より、img要素の縦幅（高さ）が長い時
+      scaleRatio = image.width / image.naturalWidth;
+      console.log('>scaleRatio', scaleRatio);
+      // 表示されている画像の実際の縦幅（高さ）を算出する
+      const actualHeight = image.naturalHeight * scaleRatio;
+      console.log('>actualHeight', actualHeight);
+      topPositionCorrectionValue = (image.height - actualHeight) / 2;
+      console.log('>topPositionCorrectionValue',topPositionCorrectionValue)
     } else {
-      this.imagewidth = image.width;
+      // 実際表示されている画像より、img要素の横幅幅が長い時
+      scaleRatio = image.height / image.naturalHeight;
+      console.log('<=scaleRatio', scaleRatio);
+      // 表示されている画像の実際の幅を算出する
+      const actualWidth = image.naturalWidth * scaleRatio ; 
+      console.log('<=actualWidth', actualWidth);
+      leftPositionCorrectionValue = (image.width - actualWidth) / 2;
+      console.log('<=leftPositionCorrectionValue',leftPositionCorrectionValue)
     }
-    this.imageHeight = image.height;
-    const widthRatio = this.imagewidth / image.naturalWidth;
-    const heightRatio = this.imageHeight / image.naturalHeight;
- 
+    // ::NOTE:: img要素の幅や高さが実際の表示画像の幅と高さと違うけれど、
+    // この値はリサイズチェック（img要素の値も変化の確認だけ。値は他に利用していない。）のみなのでそのままとする。
+    // もし実際の幅や高さを利用した場合は、リサイズチェックのときも、実際の幅高さを参照すべき。
+    this.imgElemWidth = image.width;
+    this.imgElemHeight = image.height;
+
+    console.log('topPositionCorrectionValue:', topPositionCorrectionValue, 'leftPositionCorrectionValue:',leftPositionCorrectionValue);
+
     // 画像内のボタンをそれぞれ生成し追加
     screen.buttons.forEach((buttonData)=>{
-      box.appendChild(this.createScreenButtons(buttonData, widthRatio, heightRatio, correctionLeftValue));
+      box.appendChild(this.createScreenButtons(buttonData, scaleRatio, topPositionCorrectionValue, leftPositionCorrectionValue ));
     }); 
   }
   /*
    画面遷移ボタンの生成
   ------------------------------------------------------ */
-  createScreenButtons(buttonData, widthRatio, heightRatio, correctionLeftValue){
+  createScreenButtons(buttonData, scaleRatio, topPositionCorrectionValue, leftPositionCorrectionValue){
     const button = document.createElement('div');
     button.className = 'screen-button';
     // button.setAttribute('data-destination', buttonData.destination);
@@ -436,17 +448,17 @@ class OperationExplanationViewController extends ViewController {
     // 四角形（rectタグ）; 円（circleタグ）; 楕円（ellipseタグ）; 直線（lineタグ）; 折れ線（polylineタグ）; 多角形（polygonタグ）; パス（pathタグ）; 画像（imageタグ）; 文字列（textタグ）
     switch (buttonData.shape) {
       case 'rect':
-        button.style.top = (buttonData.coords[1] * widthRatio) + 'px';
-        button.style.left = correctionLeftValue + (buttonData.coords[0] * heightRatio) + 'px';// 補正
-        button.style.width = (Math.abs(buttonData.coords[2] - buttonData.coords[0]) * widthRatio) + 'px'; 
-        button.style.height = (Math.abs(buttonData.coords[3] - buttonData.coords[1]) * heightRatio) + 'px';
+        button.style.top = topPositionCorrectionValue + (buttonData.coords[1] * scaleRatio) + 'px';
+        button.style.left = leftPositionCorrectionValue + (buttonData.coords[0] * scaleRatio) + 'px';// 補正
+        button.style.width = (Math.abs(buttonData.coords[2] - buttonData.coords[0]) * scaleRatio) + 'px'; 
+        button.style.height = (Math.abs(buttonData.coords[3] - buttonData.coords[1]) * scaleRatio) + 'px';
         button.style.borderRadius = (Math.abs(buttonData.coords[3] - buttonData.coords[1]) / 32)  + 'px'
         break;
       case 'circle':
-        button.style.top = ((buttonData.coords[1] - buttonData.coords[2]) * widthRatio) + 'px';
-        button.style.left =　correctionLeftValue + ((buttonData.coords[0] - buttonData.coords[2]) * heightRatio) + 'px';
-        button.style.width = (buttonData.coords[2] * 2 * widthRatio) + 'px';
-        button.style.height = (buttonData.coords[2] * 2 * heightRatio) + 'px';
+        button.style.top = topPositionCorrectionValue + ((buttonData.coords[1] - buttonData.coords[2]) * scaleRatio) + 'px';
+        button.style.left =　leftPositionCorrectionValue + ((buttonData.coords[0] - buttonData.coords[2]) * scaleRatio) + 'px';
+        button.style.width = (buttonData.coords[2] * 2 * scaleRatio) + 'px';
+        button.style.height = (buttonData.coords[2] * 2 * scaleRatio) + 'px';
         button.style.borderRadius = '50%';
         break;
       default:
@@ -470,15 +482,15 @@ class OperationExplanationViewController extends ViewController {
     this.removeScreenButtons();
     this.setScreenButton(screen);
   }
-  /* 画像のリサイズチェック 
+  /* 画像のリサイズチェック FIX: img要素が実際の表示画像の幅と違う件を修正しないといけない。
   ------------------------------------------------------ */
   checkScreenImageReSize() {
     const image = document.getElementById('screen-image');
-    if (this.imagewidth === image.width && this.imageHeight === image.height) {
+    if (this.imgElemWidth === image.width && this.imgElemHeight === image.height) {
       return false;
     }
-    this.imagewidth = image.width;
-    this.imageHeight = image.height;
+    this.imgElemWidth = image.width;
+    this.imgElemHeight = image.height;
     return true;
   }
   /* 自身が受け持つ要素を非表示にする（モーダルウィンドウを閉じる）
