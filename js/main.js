@@ -65,6 +65,8 @@ class Controller {
     this.currentTitleData = {};
     // 表示するスクリーンIDの初期化
     this.currentScreenID = 'screen01';
+    // 読み上げ機能のON/OFF
+    this.readingOn = true;
   }
   /* ページの表示
   ------------------------------------------------------ */
@@ -133,6 +135,9 @@ class Controller {
           )  
         );
         this.currentScreenID = event.target.closest('.screen-button').dataset.destination;
+        // 表示された説明を読み上げる
+        this.speechDescription(document.querySelector('#operation-explanation-description>p').innerText);
+
 
       /*  操作説明画面の表示部の外側をクリックした時 */
       } else if (document.getElementById('operation-explanation').classList.contains('show') &&
@@ -186,7 +191,24 @@ class Controller {
       }
     }
   }
-  
+  /* 表示された説明を読み上げる。
+   TODO: 読み上げ機能のON、OFFを設定できるようにする。
+  ------------------------------------------------------ */
+  speechDescription(text){
+    // 読み上げ機能ON
+    if (this.readingOn) {
+      if ('speechSynthesis' in window) {
+        console.log('このブラウザは音声合成に対応しています。🎉');
+        // 発言を作成
+        const uttr = new SpeechSynthesisUtterance(text);
+        uttr.lang = 'ja-JP';
+        // 発言を再生 (発言キューに発言を追加)
+        window.speechSynthesis.speak(uttr);
+      } else {
+        console.log('このブラウザは音声合成に対応していません。😭');
+      }
+    }
+  }
   // ResizeObserverとMutationObserverを実装でも良いかもしれない・・・
 }
 /* ----------------------------------------------------------------------------
