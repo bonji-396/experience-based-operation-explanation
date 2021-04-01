@@ -1,0 +1,124 @@
+@import "reset";
+
+/* page styleing
+---------------------------------------------------------------------------- */
+body {
+  padding: 10px;
+  header{
+    display: flex;
+    justify-content: space-between;
+    .links {
+      width: 20%;
+      ul {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 50px);
+        grid-template-rows: 50px;
+        text-align: center;
+        column-gap: 4px;
+        .size {
+          font-size: 50px;
+        }
+        #website {
+          padding: 5px;
+          width: 40px;
+          height: 40px;
+        }
+        .st0{
+          fill:#000;
+        }
+      }
+    }
+    nav {
+      width: 80%;
+      ul {
+        display: grid;
+        // grid-template-columns: repeat(auto-fit, minmax(3em,7em));
+        grid-template-columns: repeat(8, minmax(3em,7em));
+        grid-template-rows: 50px;
+        justify-content: end;
+        li {
+          width: 100%;
+          height: 100%;
+          text-align: center;
+        }
+        a {
+          display: block;
+          line-height: 50px;
+        }
+      }
+    }
+  }
+  main {
+
+    h1 {
+      margin: 50px;
+      text-align: center;
+      font-size: 48px;
+    }
+    .container {
+      display: grid;
+      grid-template-columns:1fr;
+      grid-template-rows: repeat(auto-fill, 100vh);
+      justify-content: center;
+      justify-items: center;
+      align-content: center;
+      align-items: center;
+      max-width: 960px;
+      margin: 0 auto;
+
+      section {
+        margin-bottom: 60px;
+        
+      }
+      h2 {
+        margin-bottom: 40px;
+      }
+      h3 {
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+}
+#pc-mock {
+  position: relative;
+  align-items: center;
+  img {
+    position: absolute;
+    top:0;
+    z-index: 1;
+
+  }
+  .screen {
+
+  }
+
+}
+
+
+// #moc-image>a>img {
+//   /* filter: drop-shadow(0 0 5px #fff); */
+//   animation-name: boderFadeIn;
+//   animation-timing-function: linear;
+//   animation-duration: 1s;
+//   /* animation-delay: 1s; */
+//   animation-direction: alternate;
+//   animation-iteration-count:2;
+// }
+// #moc-image>a:hover {
+//   filter: drop-shadow(0 0 8px --main-color);
+// }
+@keyframes boderFadeIn {
+  0% {
+    filter: drop-shadow(0 0 0 --main-color);
+  }
+  50% {
+    filter: drop-shadow(0 0 8px --main-color);
+  }
+  80% {
+    filter: drop-shadow(0 0 8px --main-color);
+  }
+  100% {
+    filter: drop-shadow(0 0 0 --main-color);
+  }
+}

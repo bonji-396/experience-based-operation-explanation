@@ -5,154 +5,164 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>解説ページのテンプレート</title>
+  <script data-search-pseudo-elements defer src="https://pro.fontawesome.com/releases/v5.10.1/js/all.js"></script>
   <link rel="stylesheet" href="css/commentary.css">
+
 </head>
 <body>
   <header>
-    <ul>
-      <li><a href="">GitHub</a></li>
-      <li><a href="">Site</a></li>
-    </ul>    
+    <div class="links">
+      <ul>
+        <li><a href="https://www.mikuro.works/portfolio/works/experience-based-operation-explanation/">
+          <svg version="1.1" id="website" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+          y="0px" viewBox="0 0 210 210" style="enable-background:new 0 0 210 210;" xml:space="preserve">
+            <path class="st0" d="M71.6,208.9c14.7,0.4,10.3-3.3,21.1-11c4.8-3.4,19-9.6,25.9-6c8.4,4.3,13.5,17,26.2,15.4
+              c11.8-1.5,22.6-15.4,22.7-37c0-19.5-15.9-27.8-26.9-32.5c-6.5-16.3-4-33.5-43.6-30.9c-30.6,2-32.8,38.4-35.1,42.1
+              c-2.3,3.7-24.4,8.9-18.5,27.3C49.5,195.5,60.7,208.6,71.6,208.9z"/>
+            <path class="st0" d="M7.4,117.9c3.6,19.2,43.2,38.4,36.8-9.4C36.7,52.6-3.7,59.7,7.4,117.9z"/>
+            <path class="st0" d="M156.4,104.6c-4.6,22.8,30.6,66.4,45.3,11C216.5,60.2,168.5,44.5,156.4,104.6z"/>
+            <path class="st0" d="M39.1,53.4c6.2,30.5,42.7,65.2,47-1.9C90.3-15.6,26.5-8.1,39.1,53.4z"/>
+            <path class="st0" d="M108.5,44.5c0,30.3,27.6,70.2,44.4,6.8C169.6-12.2,108.4-16.6,108.5,44.5z"/>
+          </svg>
+        </a></li>
+        <li><a href="https://github.com/bonji-396/experience-based-operation-explanation"> <i class="fab fa-github-square size" aria-label="github"></i></a></li>
+      </ul>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#">Top</a></li>
+        <li><a href="#overview">概要</a></li>
+        <li><a href="#discription">作業内容</a></li>
+        <li><a href="#request-details">依頼内容</a></li>
+        <li><a href="#specification">仕様</a></li>
+        <li><a href="#features">特徴</a></li>
+        <li><a href="#difficulties">苦労した点</a></li>
+        <li><a href="#reflections-and-future">反省点と今後</a></li>
+      </ul>
+    </nav>
   </header>
+
   <main>
-    
     <h1>体感型、操作説明ページの詳細</h1>
-    <section>
-      <div id="moc_image">
-        <a href="#" target="_blank" rel="noopener"><img src="img/screenshot.png" alt=""></a>        
-      </div>
-    </section>
-
-    <section class="overview">
-      <h2>概要</h2>
-      <p>
-        <a href="https://www.jreast.co.jp/mv-guide/demo/">指定席券売機ご利用案内</a>
-      </p>
-      <!-- ターゲットページと作成したページの並べて表記（変更前=>変更後） -->  
-    </section>
-
-    <section class="discription">
-      <h2>作業内容</h2>
-      <div class="discription-boxs">
-        <div class="box work">
-          <h3>作業時間</h3>
-          <p>要件定義:4時間</p>
-          <p>デザインカンプ:10時間</p>
-          <p>コーディング:24時間 - (2時間/日 x 3(月火水) * 4週) + 2時間</p>
-          <p>サーバにデプロイ作業: 30分（AWS設定含み）</p>
-          | 項目 | 時間 | 
-|---|---| 
-| 構想と仕様決定 | 4時間 |
-| 調査 | 8時間 |
-| デザインカンプ | 2時間 |
-| データ取得用コーディング | 15分 |
-| データ取得後のJOSN加工 | 3時間 |
-| 画像加工 | 3時間 |
-| コーディング | 12時間 |
-| コーディング（既存レイアウトの模倣） | -時間 |
-| 確認用AWS環境構築とデプロイ作業| 30分|</p>
-
+    <div class="conteiner">
+      <section id="visual">
+        <div id="pc-mock">
+          <img src="../../img/Apple Macbook Pro 13 Silver.png" alt="">
+          <div class="screen"></div>
         </div>
-        <div class="box work-content">
-          <h3>作業工程</h3>
-          <p>要件定義</p>
-          <p>デザインカンプ</p>
-          <p>コーディング</p>
-          <p>サーバにホスティング・修正作業</p>
-        </div>  
-        <div class="box technology-used">
-          <h3>利用技術</h3>
-          <!-- ツール・プラットフォーム・言語・フレームワーク・ライブラリの各アイコンと名称を記述 -->
-          <p>Tools: VSCode, Git, GitHub</p>
-          <p>Lnag: VanillaScript, HTML, CSS, Python</p>
-          <p>platform: Amazon S3, Amazon CloudFront, Amazon Route53, AWS Certificate Manage</p>
-          <p></p>
-        </div>  
-      </div>
-    </section>
-
-    <section class="request-details">
-      <h2>依頼内容</h2>
-      <p>クライアントより、既存ページの改修を依頼された。</p>
-      <h3>ヒアリング</h3>
-
-      <h3>要件定義</h3>
-
-      <h3>デザインカンプ</h3>
-
-    </section>
-
-    <section>
-      <div class="link">
-        <p><a href="#" target="_blank" rel="noopener">サイトへ</a></p>
-      </div>
-    </section>
-
-    <section>
-      <h2>仕様</h2>
-      <p></p>
-      <p></p>
-    </section>
-
-    <section>
-      <h2>VanillaScript</h2>
-      <p>jQuery、他のフレームワークを使わない</p>
-      <p></p>
-    </section>
-
-    <section>
-      <h2>Animation</h2>
-      <p></p>
-      <p></p>
-    </section>
-
-    <section>
-      <h2></h2>
-      <p></p>
-      <p></p>
-    </section>
-
-    <section>
-      <h2>実装先</h2>
-      <p>Amazon S3, Amazon CloudFront, Amazon Route53, AWS Certificate Managerにて、CDN、オリジナルドメイン、SSLで提供実装を行いました。</p>
-      <dl>
-        <dt>Amazon S3</dt>
-        <dd>サーバレス（サーバーマシン、Apahe等のミドルウェア実装を回避）で実装するため、静的コンテンツ実装先として利用しました。</dd>
-        <dt>Amazon CloudFront</dt>
-        <dd>CDNとして提供するため利用しました。</dd>
-        <dt>Amazon Route53</dt>
-        <dd>CloudFront経由でかつ、S3のエンドポイントをオリジンとして紐付けするためにDNSとして利用しました。</dd>
-        <dt>AWS Certificate Manager</dt>
-        <dd>SSLを（最近ウェブでは必須のため）利用しました。ドメインの証明書を発行。</dd>
-      </dl>
-      <!-- 導入メリット を追記 -->
-      <p>↓↓↓↓↓↓↓↓↓ ここに構成図を挿入 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓</p>
-    </section>
-
-    <section>
-      <h2>苦労した点</h2>
-      <dl>
-        <dt>非同期通信</dt>
-        <dd>XMLHttpRequest、Fetchのとちらにしろ、非同期通信の場合には、「その取得データ取得と取得後の表示を（DOMに）反映するまでの一連の処理は同じタイミング（コールバックも含めて、同じ処理スコープ内）で全てお行わないとトラブルになる。」ということの体得に苦労しました。
-          他のタイミングで利用する場合は、Web Storate APIを利用するなどでシリアライズするか、一旦DOMに反映してそれを利用するかのような回避策もあることも分かりました。
-        今回のように全ての情報を取得してから動作するようなアプリでは、最初からDOMに構成したページを作り、その上でdisplay:none等の切り替えでページが変化する方が、場合によっては良いのかも思いました。</dd>
-        <dt>this</dt>
-        <dd>従来の関数とアロー関数内、クラスメソッドのthisはそれぞれ違うということに気付くのに2日かかりました。</dd>
-        <dt>プロトタイプベースのオブジェクト指向</dt>
-        <dd>過去に学んだ、オブジェクト指向プログラミングはそのほとんどは、クラスベースオブジェクト指向言語であったため、コーディングすればするほど混乱を招いた。
-          コンストラクタはインスタンス変数が使えてしまうように見えるし、メソッドのオーバーロードは行えないなど、非常に考え方に苦労しました。
-          結局９割以上コーディングを終えた時点でJavaScriptでのClassはシンタックスシュガー（糖衣構文）であることが分かり、クラス自体は存在しないことがわかった（結局はオブジェクト（連想配列とプロトタイプ））</dd>
-        <dt>jsonで定義した、coordsを手作業で指定する</dt>
-        <dd>70枚の画像全てを調べてボタンの位置を確認する手作業が非常に時間がかかりました。共通する部分はほぼ同じなのですが、それでもこの作業が、一番時間がかかっています。これらの作業の効率化（アプリ化）を考えるべきだと思いました。</dd>
-      </dl>
+        <!-- <div id="sp-mock">
+          <img src="../../img/Apple iPhone 11 White.png" alt="">
+        </div> -->
+      </section>
+  
+      <section id="overview">
+        <h2>概要</h2>
+        <p>
+          <a href="https://www.jreast.co.jp/mv-guide/demo/">指定席券売機ご利用案内</a>
+        </p>
+        <!-- ターゲットページと作成したページの並べて表記（変更前=>変更後） -->  
+      </section>
+  
+      <section id="work-content">
+        <h2>作業内容</h2>
+        <div class="work-content-boxs">
+          <div class="box work-hours">
+            <h3>作業時間</h3>
+            <p>要件定義:4時間</p>
+            <p>デザインカンプ:10時間</p>
+            <p>コーディング:24時間 - (2時間/日 x 3(月火水) * 4週) + 2時間</p>
+            <p>サーバにデプロイ作業: 30分（AWS設定含み）</p>
+            | 項目 | 時間 | 
+  |---|---| 
+  | 構想と仕様決定 | 4時間 |
+  | 調査 | 8時間 |
+  | デザインカンプ | 2時間 |
+  | データ取得用コーディング | 15分 |
+  | データ取得後のJOSN加工 | 3時間 |
+  | 画像加工 | 3時間 |
+  | コーディング | 12時間 |
+  | コーディング（既存レイアウトの模倣） | -時間 |
+  | 確認用AWS環境構築とデプロイ作業| 30分|</p>
+  
+          </div>
+          <div class="box work-process">
+            <h3>作業工程</h3>
+            <p>要件定義</p>
+            <p>デザインカンプ</p>
+            <p>コーディング</p>
+            <p>ホスティング環境の構築</p>
+            <p>アップロード・修正作業</p>
+          </div>  
+          <div class="box technology-used">
+            <h3>利用技術</h3>
+            <!-- ツール・プラットフォーム・言語・フレームワーク・ライブラリの各アイコンと名称を記述 -->
+            <p>Tools: VSCode, Git, GitHub</p>
+            <p>Lnag: VanillaScript, HTML, CSS, Python</p>
+            <p>platform: Amazon S3, Amazon CloudFront, Amazon Route53, AWS Certificate Manage</p>
+            <p></p>
+          </div>  
+        </div>
+      </section>
+  
+      <section class="request-details">
+        <h2>依頼内容</h2>
+        <p>クライアントより、既存ページの改修を依頼された。</p>
+        <h3>ヒアリング</h3>
+  
+        <h3>要件定義</h3>
+  
+        <h3>デザインカンプ</h3>
+  
+      </section>
+  
+      <section id="specification"><!-- 仕様についてはGitHubに詳細に掲載 -->
+        <h2>仕様</h2>
+        <p></p>
+        <p></p>
+      </section>
+  
+      <section id="features">
+        <h2>特徴</h2>
+  
+        <h3>VanillaScript</h3>
+        <p>jQuery、他のフレームワークを使わない</p>
+        <p></p>
+  
+        <h3>Animation</h3>
+        <p></p>
+        <p></p>
+  
+        <h3>実装先</h3>
+        <p></p>
+        <p></p>
+        
+      </section>
+  
+      <section id="difficulties">
+        <h2>苦労した点</h2>
+        <dl>
+          <dt>非同期通信</dt>
+          <dd>XMLHttpRequest、Fetchのとちらにしろ、非同期通信の場合には、「その取得データ取得と取得後の表示を（DOMに）反映するまでの一連の処理は同じタイミング（コールバックも含めて、同じ処理スコープ内）で全てお行わないとトラブルになる。」ということの体得に苦労しました。
+            他のタイミングで利用する場合は、Web Storate APIを利用するなどでシリアライズするか、一旦DOMに反映してそれを利用するかのような回避策もあることも分かりました。
+          今回のように全ての情報を取得してから動作するようなアプリでは、最初からDOMに構成したページを作り、その上でdisplay:none等の切り替えでページが変化する方が、場合によっては良いのかも思いました。</dd>
+          <dt>this</dt>
+          <dd>従来の関数とアロー関数内、クラスメソッドのthisはそれぞれ違うということに気付くのに2日かかりました。</dd>
+          <dt>プロトタイプベースのオブジェクト指向</dt>
+          <dd>過去に学んだ、オブジェクト指向プログラミングはそのほとんどは、クラスベースオブジェクト指向言語であったため、コーディングすればするほど混乱を招いた。
+            コンストラクタはインスタンス変数が使えてしまうように見えるし、メソッドのオーバーロードは行えないなど、非常に考え方に苦労しました。
+            結局９割以上コーディングを終えた時点でJavaScriptでのClassはシンタックスシュガー（糖衣構文）であることが分かり、クラス自体は存在しないことがわかった（結局はオブジェクト（連想配列とプロトタイプ））</dd>
+          <dt>jsonで定義した、coordsを手作業で指定する</dt>
+          <dd>70枚の画像全てを調べてボタンの位置を確認する手作業が非常に時間がかかりました。共通する部分はほぼ同じなのですが、それでもこの作業が、一番時間がかかっています。これらの作業の効率化（アプリ化）を考えるべきだと思いました。</dd>
+        </dl>      
+      </section>
       
-    </section>
-    
-    <section>
-      <h2>今後</h2>
-      <p></p>
-      <p></p>
-    </section>
+      <section id="reflections-and-future">
+        <h2>反省点と今後</h2>
+        <p></p>
+        <p></p>
+      </section>
+    </div>
+  
 
   </main>
 </body>
