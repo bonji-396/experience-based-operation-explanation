@@ -1,0 +1,39 @@
+
+{
+"devies":[
+    {
+      "deviceName" : "Apple Macbook Pro 13 Silver",
+      "imgPath" : "../img/",
+      "deviceImageFileName" : "Apple Macbook Pro 13 Silver.png",
+      "screenImageFileName" : "pc_screenshot.gif",
+      "expansionRate" : 1,
+      "naturalScreenCoordinates" : {
+        "XStart" : 450,
+        "YStart" : 300,
+        "XEnd" : 3011,
+        "YEnd" : 1900
+      },
+      "naturalAbsolutePosition" : {
+        "x" : 0,
+        "y" : 0
+      }
+    },
+    {
+      "deviceName" : "Apple iPhone 11 White",
+      "imgPath" : "../img/",
+      "deviceImageFileName" : "Apple iPhone 11 White.png",
+      "screenImageFileName" : "sp_screenshot.gif",
+      "expansionRate" : 0.8,
+      "naturalScreenCoordinates" : {
+        "XStart" : 100,
+        "YStart" : 100,
+        "XEnd" : 927,
+        "YEnd" : 1893
+      },
+      "naturalAbsolutePosition": {
+        "x" : 0,
+        "y" : 570
+      }
+    }
+  ]
+}
