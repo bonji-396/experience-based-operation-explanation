@@ -79,14 +79,14 @@ class MockDevices {
   /* 表示された各画像のサイズと表示位置を調整する */
   adjustTheSizeAndPositionOfTheImages(){
     // .device要素の表示幅を取得（imgはフルードのため親要素を参照）
-    const width = window.getComputedStyle(this.targetElement).getPropertyValue('width');
+    const width = this.devices[0].deviceImageElement.width || window.getComputedStyle(this.targetElement).getPropertyValue('width');
     // 実寸幅取得
     const naturalWidth = this.devices[0].deviceImageElement.naturalWidth;
 
     console.log(this.devices[0].deviceImageElement);
     console.log(this.devices[0].deviceImageElement.naturalWidth);
     // 横表示比率
-    const displayWidthRatio = parseInt(width) / naturalWidth; // ゼロ Infinity
+    const displayWidthRatio = parseInt(width) / naturalWidth;
     console.log('displayWidthRatio:', displayWidthRatio, 'parseInt(width)', parseInt(width), '/ naturalWidth', naturalWidth);
     // スクリーン画像位置・縮尺の補正値(px)
     const correctionValue = 1;
