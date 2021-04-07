@@ -3,8 +3,7 @@
 html, body, h1, h2, h3, p, ul, li, dl, dt, dd {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   line-height: 1.0;
 }
 
@@ -18,24 +17,49 @@ a {
 }
 
 img {
-  vertical-align: bottom;
+  vertical-align: top;
   max-width: 100%;
+  max-height: 100%;
   height: auto;
 }
 
+/*------------------------------------------
+  Responsive Grid Media Queries - 1280, 1024, 768, 480
+   
+  1280-1024   - desktop (default grid)
+    container-width: 960px
+
+  1024-768    - tablet landscape
+    container-widht: 100%;
+
+  768-480     - tablet 
+    container-widht: 100%;
+
+  480-less    - phone landscape & smaller
+    container-widht: 100%;
+--------------------------------------------*/
 /* page styleing
 ---------------------------------------------------------------------------- */
-body {
-  padding: 10px;
+html, body {
+  scroll-behavior: smooth;
+  scroll-padding-top: 50px;
+}
+
+body * {
+  box-sizing: border-box;
 }
 
 body header {
-  display: -webkit-box;
-  display: -ms-flexbox;
+  padding: 0 20px;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 1000;
 }
 
 body header .links {
@@ -43,15 +67,11 @@ body header .links {
 }
 
 body header .links ul {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (50px)[auto-fit];
-      grid-template-columns: repeat(auto-fit, 50px);
-  -ms-grid-rows: 50px;
-      grid-template-rows: 50px;
+  grid-template-columns: repeat(auto-fit, 50px);
+  grid-template-rows: 50px;
   text-align: center;
-  -webkit-column-gap: 4px;
-          column-gap: 4px;
+  column-gap: 4px;
 }
 
 body header .links ul .size {
@@ -73,15 +93,10 @@ body header nav {
 }
 
 body header nav ul {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(3em, 7em))[8];
-      grid-template-columns: repeat(8, minmax(3em, 7em));
-  -ms-grid-rows: 50px;
-      grid-template-rows: 50px;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: end;
+  grid-template-columns: repeat(8, minmax(3em, 7em));
+  grid-template-rows: 50px;
+  justify-content: end;
 }
 
 body header nav ul li {
@@ -95,19 +110,18 @@ body header nav ul a {
   line-height: 50px;
 }
 
+body header nav ul a:hover {
+  text-shadow: 0 0 10px orange;
+}
+
 body main h1 {
-  margin: 50px;
+  margin-top: 50px;
+  padding: 40px;
   text-align: center;
   font-size: 48px;
 }
 
 body main .container {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
-  -ms-grid-rows: (100vh)[auto-fill];
-      grid-template-rows: repeat(auto-fill, 100vh);
   max-width: 960px;
   margin: 0 auto;
 }
@@ -115,75 +129,35 @@ body main .container {
 body main .container section {
   width: 100%;
   height: 100%;
-  margin-bottom: 60px;
 }
 
 body main .container h2 {
-  margin-bottom: 40px;
+  margin: 50px 0;
 }
 
 body main .container h3 {
   margin-bottom: 30px;
 }
 
-#visual {
+#visual-box {
   position: relative;
   width: 100%;
   height: 100%;
-  max-height: 100%;
   margin: 0 auto;
-  -o-object-fit: scale-down;
-     object-fit: scale-down;
-}
-
-#visual .device {
-  width: 100%;
-  height: 100%;
-  max-height: 100%;
-}
-
-#visual img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: scale-down;
-     object-fit: scale-down;
-}
-
-@-webkit-keyframes boderFadeIn {
-  0% {
-    -webkit-filter: drop-shadow(0 0 0 --main-color);
-            filter: drop-shadow(0 0 0 --main-color);
-  }
-  50% {
-    -webkit-filter: drop-shadow(0 0 8px --main-color);
-            filter: drop-shadow(0 0 8px --main-color);
-  }
-  80% {
-    -webkit-filter: drop-shadow(0 0 8px --main-color);
-            filter: drop-shadow(0 0 8px --main-color);
-  }
-  100% {
-    -webkit-filter: drop-shadow(0 0 0 --main-color);
-            filter: drop-shadow(0 0 0 --main-color);
-  }
 }
 
 @keyframes boderFadeIn {
   0% {
-    -webkit-filter: drop-shadow(0 0 0 --main-color);
-            filter: drop-shadow(0 0 0 --main-color);
+    filter: drop-shadow(0 0 0 --main-color);
   }
   50% {
-    -webkit-filter: drop-shadow(0 0 8px --main-color);
-            filter: drop-shadow(0 0 8px --main-color);
+    filter: drop-shadow(0 0 8px --main-color);
   }
   80% {
-    -webkit-filter: drop-shadow(0 0 8px --main-color);
-            filter: drop-shadow(0 0 8px --main-color);
+    filter: drop-shadow(0 0 8px --main-color);
   }
   100% {
-    -webkit-filter: drop-shadow(0 0 0 --main-color);
-            filter: drop-shadow(0 0 0 --main-color);
+    filter: drop-shadow(0 0 0 --main-color);
   }
 }
 /*# sourceMappingURL=commentary.css.map */

@@ -79,18 +79,21 @@ class MockDevices {
   /* 表示された各画像のサイズと表示位置を調整する */
   adjustTheSizeAndPositionOfTheImages(){
     // .device要素の表示幅を取得（imgはフルードのため親要素を参照）
-    const width = this.devices[0].deviceImageElement.width || window.getComputedStyle(this.targetElement).getPropertyValue('width');
+    const width = window.getComputedStyle(this.targetElement).getPropertyValue('width') || this.devices[0].deviceImageElement.width ;
+    console.log(window.getComputedStyle(this.targetElement).getPropertyValue('width'));
     // 実寸幅取得
     const naturalWidth = this.devices[0].deviceImageElement.naturalWidth;
+    const naturalHeight = this.devices[0].deviceImageElement.naturalHeight;
 
-    console.log(this.devices[0].deviceImageElement);
-    console.log(this.devices[0].deviceImageElement.naturalWidth);
     // 横表示比率
-    const displayWidthRatio = parseInt(width) / naturalWidth;
+    const displayWidthRatio = parseInt(width) / naturalWidth; // ゼロ Infinity
     console.log('displayWidthRatio:', displayWidthRatio, 'parseInt(width)', parseInt(width), '/ naturalWidth', naturalWidth);
     // スクリーン画像位置・縮尺の補正値(px)
     const correctionValue = 1;
 
+    // position: absolute; 指定画像の次に来る要素が入り込む為、親要素に高さを入れる。
+    this.targetElement.style.height = displayWidthRatio * naturalHeight + 'px';
+    
     // 縦横表示比率を基にして、各画像のポジション算出し指定する
     for (const device of this.devices) {
       device.screenDisplayAdjustment(displayWidthRatio, correctionValue);
@@ -102,18 +105,26 @@ class MockDevices {
 class Device {
   constructor(deviceInfo) {
     this.deviceInfo = deviceInfo;
-    this.startX = 0;
-    this.startY = 0;
     
     this.deviceImageElement = document.createElement('img');
     this.deviceImageElement.src = deviceInfo.imgPath + deviceInfo.deviceImageFileName;
     this.deviceImageElement.alt = deviceInfo.deviceName;
+    this.deviceImageElement.style.maxWidth = '100%';
+    this.deviceImageElement.style.maxHeight = '100%';
+
     this.screenImageElement = document.createElement('img');
     this.screenImageElement.src = this.deviceInfo.imgPath + this.deviceInfo.screenImageFileName;
     this.screenImageElement.alt = this.deviceInfo.deviceName + ' Screen';
+    this.screenImageElement.style.maxWidth = '100%';
+    this.screenImageElement.style.maxHeight = '100%';
+
     this.deviceImageSet = document.createElement('div');
     this.deviceImageSet.className = 'device';
     this.deviceImageSet.style.position = 'absolute';
+    ///////////// FIX
+    // this.deviceImageSet.style.maxWidth = '100%'; // 縦フルード対応
+    // this.deviceImageSet.style.maxHeight = '100%';// 縦フルード対応
+
     this.deviceImageSet.appendChild(this.deviceImageElement);
     this.deviceImageSet.appendChild(this.screenImageElement);
   }

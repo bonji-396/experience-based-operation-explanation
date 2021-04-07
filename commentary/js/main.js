@@ -1,7 +1,7 @@
 /* 定数
 ---------------------------------------------------------------------------- */
-TARGET_ID_NAME = 'visual';
-DEVICE_IMAGE_FILE = '../deviceInfo.json'
+TARGET_ID_NAME = 'visual-box';
+DEVICE_IMAGE_FILE = 'deviceInfo.json';
 
 /* ページロード後にDOM解析終了時の処理
 ---------------------------------------------------------------------------- */

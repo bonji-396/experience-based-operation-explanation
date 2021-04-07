@@ -3,7 +3,7 @@
 "devies":[
     {
       "deviceName" : "Apple Macbook Pro 13 Silver",
-      "imgPath" : "../img/",
+      "imgPath" : "img/",
       "deviceImageFileName" : "Apple Macbook Pro 13 Silver.png",
       "screenImageFileName" : "pc_screenshot.gif",
       "expansionRate" : 1,
@@ -20,7 +20,7 @@
     },
     {
       "deviceName" : "Apple iPhone 11 White",
-      "imgPath" : "../img/",
+      "imgPath" : "img/",
       "deviceImageFileName" : "Apple iPhone 11 White.png",
       "screenImageFileName" : "sp_screenshot.gif",
       "expansionRate" : 0.8,
