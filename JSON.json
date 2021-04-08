@@ -1991,7 +1991,7 @@
               "name": "next",
               "shape": "rect",
               "destination": "screen07",
-              "coords": [652, 494, 769, 537]
+              "coords": [628, 494, 742, 537]
             },
             {
               "name" : "cancel",
