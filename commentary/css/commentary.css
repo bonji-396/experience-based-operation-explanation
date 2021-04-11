@@ -1,14 +1,10 @@
 /* reset
 ---------------------------------------------------------------------------- */
-html, body, h1, h2, h3, p, ul, li, dl, dt, dd {
+html, body, h1, h2, h3, p, dl, dt, dd {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   line-height: 1.0;
-}
-
-ul {
-  list-style: none;
 }
 
 a {
@@ -18,7 +14,7 @@ a {
 
 img {
   vertical-align: top;
-  max-width: 100%;
+  max-width: 960px;
   max-height: 100%;
   height: auto;
 }
@@ -38,6 +34,21 @@ img {
   480-less    - phone landscape & smaller
     container-widht: 100%;
 --------------------------------------------*/
+@keyframes boderFadeIn {
+  0% {
+    filter: drop-shadow(0 0 0 --main-color);
+  }
+  50% {
+    filter: drop-shadow(0 0 8px --main-color);
+  }
+  80% {
+    filter: drop-shadow(0 0 8px --main-color);
+  }
+  100% {
+    filter: drop-shadow(0 0 0 --main-color);
+  }
+}
+
 /* page styleing
 ---------------------------------------------------------------------------- */
 html, body {
@@ -47,6 +58,10 @@ html, body {
 
 body * {
   box-sizing: border-box;
+}
+
+body p {
+  line-height: 1.5em;
 }
 
 body header {
@@ -60,6 +75,16 @@ body header {
   margin: 0 auto;
   background-color: rgba(255, 255, 255, 0.8);
   z-index: 1000;
+}
+
+body header ul, body header li {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+body header ul {
+  list-style: none;
 }
 
 body header .links {
@@ -114,16 +139,10 @@ body header nav ul a:hover {
   text-shadow: 0 0 10px orange;
 }
 
-body main h1 {
-  margin-top: 50px;
-  padding: 40px;
-  text-align: center;
-  font-size: 48px;
-}
-
 body main .container {
   max-width: 960px;
   margin: 0 auto;
+  padding: 10px;
 }
 
 body main .container section {
@@ -131,33 +150,101 @@ body main .container section {
   height: 100%;
 }
 
+body main .container h1 {
+  margin-top: 50px;
+  padding: 40px;
+  text-align: center;
+  font-size: 48px;
+}
+
 body main .container h2 {
   margin: 50px 0;
+  padding: 6px;
+  border-bottom: 2px solid #ddd;
 }
 
 body main .container h3 {
-  margin-bottom: 30px;
+  margin: 20px 0;
+  padding: 4px;
+  border-bottom: 1px solid #ddd;
 }
 
-#visual-box {
+body main .container ul li {
+  line-height: 1.8em;
+}
+
+body main .container dl {
+  width: 100%;
+  border: 1px solid #333;
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+
+body main .container dl dt {
+  padding: 6px;
+  border-bottom: 1px solid #333;
+  line-height: 21px;
+}
+
+body main .container dl dt:first-of-type {
+  background-color: #666;
+  color: #fff;
+}
+
+body main .container dl dt:last-of-type {
+  border-bottom: 0;
+}
+
+body main .container dl dd {
+  padding: 6px;
+  border-bottom: 1px solid #333;
+  line-height: 21px;
+  border-left: 1px solid #333;
+}
+
+body main .container dl dd:first-of-type {
+  background-color: #666;
+  color: #fff;
+}
+
+body main .container dl dd:last-of-type {
+  border-bottom: 0;
+}
+
+body main .container #visual-box {
   position: relative;
   width: 100%;
   height: 100%;
   margin: 0 auto;
 }
 
-@keyframes boderFadeIn {
-  0% {
-    filter: drop-shadow(0 0 0 --main-color);
-  }
-  50% {
-    filter: drop-shadow(0 0 8px --main-color);
-  }
-  80% {
-    filter: drop-shadow(0 0 8px --main-color);
-  }
-  100% {
-    filter: drop-shadow(0 0 0 --main-color);
-  }
+body main .container #discription .work-content-boxs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+}
+
+body main .container #discription .work-content-boxs .work dt {
+  text-align: center;
+}
+
+body main .container #discription .work-content-boxs .work-hours-and-process dl {
+  grid-template-columns: 70% 30%;
+}
+
+body main .container #discription .work-content-boxs .work-hours-and-process dl dt:last-of-type {
+  background-color: #DDD;
+}
+
+body main .container #discription .work-content-boxs .work-hours-and-process dl dd {
+  text-align: right;
+}
+
+body main .container #discription .work-content-boxs .work-hours-and-process dl dd:nth-of-type(1) {
+  text-align: center;
+}
+
+body main .container #discription .work-content-boxs .work-hours-and-process dl dd:last-of-type {
+  background-color: #ddd;
 }
 /*# sourceMappingURL=commentary.css.map */
