@@ -4,14 +4,14 @@
     {
       "deviceName" : "Apple Macbook Pro 13 Silver",
       "imgPath" : "img/",
-      "deviceImageFileName" : "Apple Macbook Pro 13 Silver.png",
+      "deviceImageFileName" : "Apple Macbook Pro 13 Silver middle.png",
       "screenImageFileName" : "pc_screenshot.gif",
       "expansionRate" : 1,
       "naturalScreenCoordinates" : {
-        "XStart" : 450,
-        "YStart" : 300,
-        "XEnd" : 3011,
-        "YEnd" : 1900
+        "XStart" : 133,
+        "YStart" : 90,
+        "XEnd" : 890,
+        "YEnd" : 565
       },
       "naturalAbsolutePosition" : {
         "x" : 0,
@@ -21,18 +21,18 @@
     {
       "deviceName" : "Apple iPhone 11 White",
       "imgPath" : "img/",
-      "deviceImageFileName" : "Apple iPhone 11 White.png",
+      "deviceImageFileName" : "Apple iPhone 11 White middle.png",
       "screenImageFileName" : "sp_screenshot.gif",
-      "expansionRate" : 0.8,
+      "expansionRate" : 0.65,
       "naturalScreenCoordinates" : {
-        "XStart" : 100,
-        "YStart" : 100,
-        "XEnd" : 927,
-        "YEnd" : 1893
+        "XStart" : 37,
+        "YStart" : 40,
+        "XEnd" : 367,
+        "YEnd" : 733
       },
       "naturalAbsolutePosition": {
         "x" : 0,
-        "y" : 570
+        "y" : 140
       }
     }
   ]
