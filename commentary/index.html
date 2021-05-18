@@ -55,14 +55,30 @@
   
       <section id="overview">
         <h2>概要</h2>
-        <p>
-          <a href="https://www.jreast.co.jp/mv-guide/demo/">指定席券売機ご利用案内</a>
+        <h3>指定席券売機ご利用を体感するページです</h3>
+
+        <p>こちらの
+          <a href="https://www.jreast.co.jp/mv-guide/demo/">『指定席券売機ご利用案内』</a>
+        を、より体感的なデザインにリデザインしてみました。
         </p>
-        <!-- ターゲットページと作成したページの並べて表記（変更前=>変更後） -->  
+
+        <h3>サイトへのリンク</h3>
+        <ul>
+          <li><a href="https://www.mikuro.works/portfolio/works/resume_editting/">履歴書 Editorサイトへ</a></li>
+          <li><a href="https://github.com/bonji-396/resume_editting/">GitHubへ</a></li>
+        </ul>
       </section>
   
       <section id="discription">
         <h2>作業内容</h2>
+        <ul>
+          <li>企画・設計</li>
+          <li>リソース準備として既存サイトのスクレイピング</li>
+          <li>コーディング</li>
+          <li>テスト</li>
+          <li>実装</li>
+          <li>プロモーション活動</li>
+        </ul>
         <div class="work-content-boxs">
           <div class="box work-hours-and-process">
             <h3>作業工程・作業時間</h3>
@@ -77,7 +93,7 @@
               <dt>コーディング : </dt><dd>17時間</dd>
               <dt>ホスティング環境の構築 : </dt><dd>30分</dd>
               <dt>アップロード・修正作業 : </dt><dd>5分</dd>
-              <td>total : </td><dd>36時間</dd>
+              <dt>total : </dt><dd>36時間</dd>
             </dl>
           </div>
 
@@ -86,7 +102,7 @@
             <!-- ツール・プラットフォーム・言語・フレームワーク・ライブラリの各アイコンと名称を記述 -->
             <dl>
               <dt>ツール : </dt><dd>VSCode, Git, GitHub, PhotoShop</dd>
-              <dt>言語 : </dt><dd>JavaScript, HTML, CSS</dd>
+              <dt>言語 : </dt><dd>JavaScript, HTML, CSS、スクレイピング及び、画面制御定義JSONファイルの生成にPython</dd>
               <dt>ライブラリ</dt><dd></dd>
               <dt>フレームワーク</dt><dd></dd>
               <dt>プラットフォーム</dt><dd>Amazon S3, Amazon CloudFront, Amazon Route53, AWS Certificate Manage</dd>
@@ -186,37 +202,32 @@
         </dl>
 
         <h3>ワイヤーフレーム</h3>
-          ![ワイヤーフレーム](img/wireframe.png "ワイヤーフレーム")
+        <img src="img/wireframe.png" alt="ワイヤーフレーム">
 
-        <h3>デザインカンプ</h3>  
+        <h3>デザインカンプ</h3>
 
 
       </section>
   
       <section id="specification"><!-- 仕様についてはGitHubに詳細に掲載 -->
         <h2>仕様</h2>
-        <p></p>
-        <p></p>
+        <p>既存のページをより体感的にリデザインすること。</p>
       </section>
   
       <section id="features">
         <h2>特徴</h2>
 
         <h3>画像の重ね合わせ</h3>
-        <p></p>
-        <p></p>
+        <p>各必要な操作ナビゲーションを、画像等を重ね合わせて表示し表現</p>
   
         <h3>VanillaScript</h3>
         <p>jQuery、他のフレームワークを使わない</p>
-        <p></p>
   
         <h3>Animation</h3>
-        <p></p>
-        <p></p>
+        <p>こちらも標準のWeb Animation APIのみで実装</p>
   
         <h3>実装先</h3>
-        <p></p>
-        <p></p>
+        <p>テスト及び提供先として、Amazon S3の静的ホスティング機能を利用しサーバレス環境で実装</p>
         
       </section>
   
