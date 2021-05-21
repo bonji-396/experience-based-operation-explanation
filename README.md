@@ -10,8 +10,8 @@
 
 - 鉄道会社のHPに掲載する、対象機器の操作説明ページ [指定席券売機ご利用案内](https://www.jreast.co.jp/mv-guide/demo/)  の新案ページとして、指定席券売機の操作説明を（モックアップ型）体験型で行うページに改変してほしい。
 
-### 変更後（クライアントワーク）のページ
-[変更後（クライアントワーク）のページ](https://www.mikuro.works/portfolio/works/experience_based_operation_explanation/)
+### （制作した）変更後のページ
+[変更後（制作した）のページ](https://www.mikuro.works/portfolio/works/experience_based_operation_explanation/)
 ![output](https://user-images.githubusercontent.com/71716610/111876207-076a8380-89e1-11eb-8474-3b227e2b1e7d.gif)
 
 
