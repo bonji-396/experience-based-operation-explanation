@@ -16,6 +16,7 @@
 
 
 ### 既存のページ（変更前）
+[既存のページ(指定席券売機ご利用案内)](https://www.jreast.co.jp/mv-guide/demo/)
 ![befor](https://user-images.githubusercontent.com/71716610/111925617-fe66d880-8aec-11eb-9faf-bcc17bc3c64f.gif)
 
 ## ヒアリング
