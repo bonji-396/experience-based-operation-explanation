@@ -106,7 +106,7 @@
 
 ### 各ページのワイヤーフレーム
 
-![wireframe](https://user-images.githubusercontent.com/71716610/113803572-c374ce00-9797-11eb-9087-4005fc030d61.png width="400px")
+[wireframe](https://user-images.githubusercontent.com/71716610/113803572-c374ce00-9797-11eb-9087-4005fc030d61.png)
 
 ## （要件を満たすための）実現方法と調査
 
